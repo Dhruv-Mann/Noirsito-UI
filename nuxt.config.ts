@@ -19,7 +19,7 @@ export default defineNuxtConfig({
       title: 'Noirsito UI - Minimalist Vue 3 Component Registry',
       meta: [
         { name: 'description', content: 'Minimalist Vue 3 & Nuxt component registry built with Golden Ratio typography and direct local injection.' },
-        { name: 'theme-color', content: '#14110F' }
+        { name: 'theme-color', content: '#F7F3EC' }
       ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
