@@ -3,7 +3,7 @@ import type { RegistryItem } from '~~/shared/types/registry'
 /**
  * Component Registry Data Source
  * Add your components here to expose them via the public API (/api/registry/[name].json)
- * and CLI tool (npx noir-ui add <name>).
+ * and CLI tool (npx noirsito-ui add <name>).
  */
 export const registryData: Record<string, RegistryItem> = {
   // Example component entry template:

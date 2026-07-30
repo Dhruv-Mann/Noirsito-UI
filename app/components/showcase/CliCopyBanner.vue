@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
 const { copied, copyToClipboard } = useCopy()
 
 const cliCommand = computed(() => {
-  return `npx noir-ui add ${props.componentName}`
+  return `npx noirsito-ui add ${props.componentName}`
 })
 
 function handleCopy() {

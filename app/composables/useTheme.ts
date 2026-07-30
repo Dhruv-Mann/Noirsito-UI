@@ -18,18 +18,18 @@ export function useTheme() {
       if (isDark.value) {
         document.documentElement.classList.add('dark')
         document.documentElement.classList.remove('light')
-        localStorage.setItem('noir-theme', 'dark')
+        localStorage.setItem('noirsito-theme', 'dark')
       } else {
         document.documentElement.classList.add('light')
         document.documentElement.classList.remove('dark')
-        localStorage.setItem('noir-theme', 'light')
+        localStorage.setItem('noirsito-theme', 'light')
       }
     }
   }
 
   function initTheme() {
     if (import.meta.client) {
-      const saved = localStorage.getItem('noir-theme')
+      const saved = localStorage.getItem('noirsito-theme')
       if (saved) {
         isDark.value = saved === 'dark'
       } else {
