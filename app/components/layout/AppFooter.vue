@@ -13,7 +13,7 @@
       <div class="flex flex-wrap items-center gap-6 font-medium text-ink/70 dark:text-paper/70">
         <NuxtLink to="/components" class="hover:text-rust dark:hover:text-mustard transition-colors">Components</NuxtLink>
         <a href="https://github.com/Dhruv-Mann" target="_blank" rel="noopener noreferrer" class="hover:text-rust dark:hover:text-mustard transition-colors">GitHub</a>
-        <a href="https://github.com/Dhruv-Mann" target="_blank" rel="noopener noreferrer" class="hover:text-rust dark:hover:text-mustard transition-colors">Twitter</a>
+        <a href="https://x.com/DhruvMann64" target="_blank" rel="noopener noreferrer" class="hover:text-rust dark:hover:text-mustard transition-colors">Twitter</a>
         <a href="https://www.linkedin.com/in/dhruv-mann" target="_blank" rel="noopener noreferrer" class="hover:text-rust dark:hover:text-mustard transition-colors">LinkedIn</a>
       </div>
 
