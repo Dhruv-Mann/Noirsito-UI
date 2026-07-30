@@ -87,8 +87,9 @@ function initStars() {
 function handleResize() {
   const canvas = canvasEl.value
   if (!canvas) return
-  width = canvas.width = window.innerWidth
-  height = canvas.height = window.innerHeight
+  const parent = canvas.parentElement
+  width = canvas.width = parent ? parent.clientWidth : 800
+  height = canvas.height = parent ? parent.clientHeight : 400
   initStars()
 }
 
@@ -290,8 +291,9 @@ function render() {
 onMounted(() => {
   const canvas = canvasEl.value
   if (!canvas) return
-  width = canvas.width = window.innerWidth
-  height = canvas.height = window.innerHeight
+  const parent = canvas.parentElement
+  width = canvas.width = parent ? parent.clientWidth : 800
+  height = canvas.height = parent ? parent.clientHeight : 400
 
   window.addEventListener('resize', handleResize)
   window.addEventListener('mousemove', handleMouseMove)

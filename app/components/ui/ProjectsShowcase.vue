@@ -368,17 +368,18 @@ function handleTouchEnd() {
 
 <style scoped>
 .projects-showcase-stage {
-  position: relative;
-  min-height: 100vh;
+  position: absolute;
+  inset: 0;
+  height: 100%;
   width: 100%;
   background: #080305;
   color: #FAFAFA;
-  overflow: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 100px;
+  padding: 24px 16px;
 }
 
 .noise-overlay {

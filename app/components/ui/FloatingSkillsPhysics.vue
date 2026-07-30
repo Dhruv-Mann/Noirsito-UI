@@ -46,8 +46,9 @@ const props = withDefaults(defineProps<{
 const badges = ref<PhysicsBadge[]>([])
 
 function initPhysics() {
-  const w = window.innerWidth
-  const h = window.innerHeight * 0.38
+  const container = containerRef.value
+  const w = container ? container.clientWidth : 600
+  const h = container ? container.clientHeight : 350
 
   const list: PhysicsBadge[] = []
   const initialPositions = [
@@ -82,9 +83,10 @@ function initPhysics() {
 }
 
 function updatePhysics() {
-  const w = window.innerWidth
-  const h = window.innerHeight
-  const topMaxY = h * 0.36
+  const container = containerRef.value
+  const w = container ? container.clientWidth : 600
+  const h = container ? container.clientHeight : 350
+  const topMaxY = h - 40
   const cx = w / 2
   const cy = h / 2
   const ribbonBufferRadius = 240

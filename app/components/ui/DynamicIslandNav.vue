@@ -85,11 +85,11 @@ function navigateTo(tab: 'home' | 'tech-stack' | 'projects' | 'commands') {
 
 <style scoped>
 .dynamic-island-wrapper {
-  position: fixed;
+  position: absolute;
   top: 24px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 900;
+  z-index: 50;
   background: #1E0713;
   border: 1px solid rgba(190, 44, 85, 0.4);
   border-radius: 28px;

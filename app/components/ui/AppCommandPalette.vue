@@ -13,7 +13,7 @@ const emit = defineEmits<{
   (e: 'selectCommand', actionId: string): void
 }>()
 
-const isOpen = ref(false)
+const isOpen = ref(true)
 const isTriggerHovered = ref(false)
 const searchQuery = ref('')
 const selectedIndex = ref(0)
@@ -448,15 +448,15 @@ onUnmounted(() => {
 }
 
 .palette-backdrop {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  z-index: 10000000;
-  background: rgba(4, 5, 7, 0.8);
+  z-index: 50;
+  background: rgba(4, 5, 7, 0.85);
   backdrop-filter: blur(8px);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding-top: 12vh;
+  padding: 16px;
 }
 
 .palette-modal {

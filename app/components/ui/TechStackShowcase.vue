@@ -168,12 +168,13 @@ const stackCategories: StackCategory[] = [
 
 <style scoped>
 .tech-stack-showcase {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background: #080305;
   color: #FAFAFA;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .noise-overlay {
@@ -195,9 +196,10 @@ const stackCategories: StackCategory[] = [
 
 .left-content-column {
   flex: 1;
-  max-width: 68%;
+  width: 100%;
+  max-width: 100%;
   height: 100%;
-  padding: 100px 48px 48px 64px;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;

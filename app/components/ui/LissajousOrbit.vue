@@ -105,20 +105,12 @@ onBeforeUnmount(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 460px;
-  height: 460px;
+  width: 320px;
+  height: 320px;
+  max-width: 100%;
+  max-height: 100%;
   pointer-events: none;
-  filter: drop-shadow(0 0 30px rgba(174, 59, 139, 0.45));
-  transform: scale(1);
-  opacity: 1;
-  transition: transform 2.88s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 2.88s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
-}
-
-.lissajous-backdrop-wrap.expanding {
-  transform: scale(9.5);
-  opacity: 0;
+  filter: drop-shadow(0 0 20px rgba(174, 59, 139, 0.45));
 }
 
 canvas {

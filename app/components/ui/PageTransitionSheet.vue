@@ -534,11 +534,11 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .pink-sweep-sheet {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
   background: radial-gradient(circle at 50% 50%, #240b12 0%, #0d0506 65%, #000000 100%);
   border-top: 3px solid #AE3B8B;
   box-shadow: 0 -20px 90px rgba(0, 0, 0, 0.95), inset 0 0 140px rgba(174, 59, 139, 0.3);

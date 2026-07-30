@@ -131,8 +131,9 @@ function seededRandom(x: number, y: number) {
 function handleResize() {
   const canvas = canvasRef.value
   if (!canvas) return
-  width = canvas.width = window.innerWidth
-  height = canvas.height = window.innerHeight
+  const parent = canvas.parentElement
+  width = canvas.width = parent ? parent.clientWidth : 800
+  height = canvas.height = parent ? parent.clientHeight : 400
   initDeterministicGrid()
 }
 
@@ -378,8 +379,9 @@ function render(time: number) {
 onMounted(() => {
   const canvas = canvasRef.value
   if (!canvas) return
-  width = canvas.width = window.innerWidth
-  height = canvas.height = window.innerHeight
+  const parent = canvas.parentElement
+  width = canvas.width = parent ? parent.clientWidth : 800
+  height = canvas.height = parent ? parent.clientHeight : 400
 
   window.addEventListener('resize', handleResize)
   window.addEventListener('mousemove', handleMouseMove)

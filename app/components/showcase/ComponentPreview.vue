@@ -62,7 +62,7 @@ function handleCopy() {
           <button
             type="button"
             :class="cn(
-              'px-3 py-1 rounded-md text-xs font-semibold transition-colors flex items-center gap-1.5',
+              'px-3 py-1 rounded-md text-xs font-semibold transition-colors flex items-center gap-1.5 btn-tactile',
               activeTab === 'preview' ? 'bg-rust text-paper shadow-sm' : 'text-ink/60 dark:text-paper/60 hover:text-ink dark:hover:text-paper'
             )"
             @click="activeTab = 'preview'"
@@ -77,7 +77,7 @@ function handleCopy() {
           <button
             type="button"
             :class="cn(
-              'px-3 py-1 rounded-md text-xs font-semibold transition-colors flex items-center gap-1.5',
+              'px-3 py-1 rounded-md text-xs font-semibold transition-colors flex items-center gap-1.5 btn-tactile',
               activeTab === 'code' ? 'bg-rust text-paper shadow-sm' : 'text-ink/60 dark:text-paper/60 hover:text-ink dark:hover:text-paper'
             )"
             @click="activeTab = 'code'"
@@ -95,7 +95,7 @@ function handleCopy() {
             type="button"
             title="Desktop View"
             :class="cn(
-              'p-1 rounded-md transition-colors',
+              'p-1 rounded-md transition-colors btn-tactile',
               viewportSize === 'desktop' ? 'bg-paper dark:bg-ink text-rust' : 'text-ink/50 dark:text-paper/50 hover:text-ink dark:hover:text-paper'
             )"
             @click="viewportSize = 'desktop'"
@@ -108,7 +108,7 @@ function handleCopy() {
             type="button"
             title="Tablet View"
             :class="cn(
-              'p-1 rounded-md transition-colors',
+              'p-1 rounded-md transition-colors btn-tactile',
               viewportSize === 'tablet' ? 'bg-paper dark:bg-ink text-rust' : 'text-ink/50 dark:text-paper/50 hover:text-ink dark:hover:text-paper'
             )"
             @click="viewportSize = 'tablet'"
@@ -121,7 +121,7 @@ function handleCopy() {
             type="button"
             title="Mobile View"
             :class="cn(
-              'p-1 rounded-md transition-colors',
+              'p-1 rounded-md transition-colors btn-tactile',
               viewportSize === 'mobile' ? 'bg-paper dark:bg-ink text-rust' : 'text-ink/50 dark:text-paper/50 hover:text-ink dark:hover:text-paper'
             )"
             @click="viewportSize = 'mobile'"
@@ -139,7 +139,7 @@ function handleCopy() {
             v-if="activeTab === 'preview'"
             type="button"
             title="Toggle Paper / Dark Background"
-            class="p-1.5 rounded-lg text-ink/60 dark:text-paper/60 hover:text-rust bg-paper-300/50 dark:bg-ink-800/50 transition-colors"
+            class="p-1.5 rounded-lg text-ink/60 dark:text-paper/60 hover:text-rust bg-paper-300/50 dark:bg-ink-800/50 transition-colors btn-tactile"
             @click="previewTheme = previewTheme === 'dark' ? 'paper' : 'dark'"
           >
             <svg v-if="previewTheme === 'dark'" class="w-3.5 h-3.5 text-mustard" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -155,7 +155,7 @@ function handleCopy() {
             v-if="activeTab === 'preview'"
             type="button"
             title="Reset State"
-            class="p-1.5 rounded-lg text-ink/60 dark:text-paper/60 hover:text-rust bg-paper-300/50 dark:bg-ink-800/50 transition-colors"
+            class="p-1.5 rounded-lg text-ink/60 dark:text-paper/60 hover:text-rust bg-paper-300/50 dark:bg-ink-800/50 transition-colors btn-tactile"
             @click="resetState"
           >
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -166,7 +166,7 @@ function handleCopy() {
           <!-- Copy Component Code -->
           <button
             type="button"
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-rust hover:bg-rust-hover text-paper shadow-sm transition-all outline-none active:scale-95"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-rust hover:bg-rust-hover text-paper shadow-sm transition-all outline-none btn-tactile"
             @click="handleCopy"
           >
             <svg v-if="copied" class="w-3.5 h-3.5 text-paper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -181,18 +181,19 @@ function handleCopy() {
       </div>
 
       <!-- Main Canvas / Code Tab Content -->
-      <div class="relative min-h-[280px] flex items-center justify-center p-6 transition-all duration-200">
+      <div class="relative min-h-[300px] flex items-center justify-center p-4 transition-all duration-200 overflow-hidden">
         <!-- Preview Tab -->
         <div
           v-if="activeTab === 'preview'"
           :key="resetKey"
           :class="cn(
-            'w-full flex items-center justify-center p-8 rounded-xl min-h-[260px] transition-all duration-200 border',
+            'w-full flex items-center justify-center p-4 rounded-xl min-h-[360px] h-[440px] max-h-[500px] transition-all duration-200 border relative overflow-hidden isolate transform-gpu',
             previewTheme === 'dark'
               ? 'bg-ink border-white/10 text-paper'
               : 'bg-paper border-ink-200/60 text-ink shadow-inner',
             viewportWidthClass
           )"
+          style="contain: paint layout; transform: translateZ(0);"
         >
           <slot />
         </div>
