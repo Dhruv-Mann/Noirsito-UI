@@ -6,7 +6,7 @@
           Noirsito<span class="text-rust">.UI</span>
         </span>
         <p class="text-ink/60 dark:text-paper/60 text-xs">
-          Designed with Golden Ratio craft. Open-source Vue 3 & Nuxt component distribution.
+          Open-source Vue 3 & Nuxt component distribution.
         </p>
       </div>
 
