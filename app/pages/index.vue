@@ -6,7 +6,7 @@ import CliCopyBanner from '~/components/showcase/CliCopyBanner.vue'
   <div class="flex flex-col gap-20 py-12 lg:py-20 max-w-4xl mx-auto">
     <!-- Main Landing Hero (Athelas + Moara Golden Ratio Typography) -->
     <section class="flex flex-col items-center text-center gap-8">
-      <!-- Minimalist Category Tag (Shorter as requested) -->
+      <!-- Minimalist Category Tag -->
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-deep/20 bg-teal-soft text-xs font-semibold text-teal-deep dark:text-mustard">
         <span class="w-1.5 h-1.5 rounded-full bg-teal-deep dark:bg-mustard" />
         <span>Vue 3 Primitives</span>
@@ -59,41 +59,29 @@ import CliCopyBanner from '~/components/showcase/CliCopyBanner.vue'
       </div>
     </section>
 
-    <!-- Editorial Architecture Overview (Athelas Headings + Moara Body) -->
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-ink-200/50 dark:border-paper-400/10">
-      <div class="minimal-card rounded-2xl p-6 flex flex-col gap-3">
-        <div class="w-9 h-9 rounded-lg bg-rust-soft border border-rust/20 flex items-center justify-center text-rust">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-        </div>
+    <!-- Editorial Cardless Breakdown Section (Golden Ratio Numbering & Athelas Typography) -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-10 py-10 border-y border-ink-200/60 dark:border-paper-400/15">
+      <div class="flex flex-col gap-2.5">
+        <span class="font-mono text-xs font-semibold text-rust tracking-wider">01 / OWNERSHIP</span>
         <h3 class="text-golden-h3 font-serif text-ink dark:text-paper font-semibold">100% Code Ownership</h3>
-        <p class="text-xs text-ink/70 dark:text-paper/70 font-sans leading-golden">
-          Components copy directly into your local directory (<code class="text-rust font-mono">@/components/ui/</code>) with zero third-party dependency locks.
+        <p class="text-xs text-ink/75 dark:text-paper/75 font-sans leading-golden">
+          Components copy directly into your local directory (<code class="text-rust font-mono font-medium">@/components/ui/</code>) with zero third-party dependency locks or breaking npm updates.
         </p>
       </div>
 
-      <div class="minimal-card rounded-2xl p-6 flex flex-col gap-3">
-        <div class="w-9 h-9 rounded-lg bg-teal-soft border border-teal-deep/20 flex items-center justify-center text-teal-deep dark:text-mustard">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-        </div>
+      <div class="flex flex-col gap-2.5">
+        <span class="font-mono text-xs font-semibold text-teal-deep dark:text-mustard tracking-wider">02 / INTERACTION</span>
         <h3 class="text-golden-h3 font-serif text-ink dark:text-paper font-semibold">Subtle Micro-Interactions</h3>
-        <p class="text-xs text-ink/70 dark:text-paper/70 font-sans leading-golden">
-          Inspect tactile states, viewports, and light/dark theme backgrounds live on the main components showcase page.
+        <p class="text-xs text-ink/75 dark:text-paper/75 font-sans leading-golden">
+          Inspect tactile states, viewports, and light/dark theme backgrounds live on the main components page.
         </p>
       </div>
 
-      <div class="minimal-card rounded-2xl p-6 flex flex-col gap-3">
-        <div class="w-9 h-9 rounded-lg bg-mustard-soft border border-mustard/30 flex items-center justify-center text-mustard">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-        </div>
-        <h3 class="text-golden-h3 font-serif text-ink dark:text-paper font-semibold">Public API</h3>
-        <p class="text-xs text-ink/70 dark:text-paper/70 font-sans leading-golden">
-          Nitro API routes (<code class="text-teal-deep dark:text-mustard font-mono">/api/registry/[name].json</code>) serve raw file schemas for automated CLI injection.
+      <div class="flex flex-col gap-2.5">
+        <span class="font-mono text-xs font-semibold text-mustard dark:text-rust tracking-wider">03 / INJECTION</span>
+        <h3 class="text-golden-h3 font-serif text-ink dark:text-paper font-semibold">Public API & CLI</h3>
+        <p class="text-xs text-ink/75 dark:text-paper/75 font-sans leading-golden">
+          Nitro API routes (<code class="text-teal-deep dark:text-mustard font-mono font-medium">/api/registry/[name].json</code>) serve raw file schemas for automated CLI injection.
         </p>
       </div>
     </section>
