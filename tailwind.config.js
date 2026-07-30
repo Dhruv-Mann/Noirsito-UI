@@ -10,77 +10,66 @@ module.exports = {
     './plugins/**/*.{js,ts}',
     './utils/**/*.{js,ts}',
     './App.{js,ts,vue}',
-    './app.{js,ts,vue}',
-    './Error.{js,ts,vue}',
-    './error.{js,ts,vue}'
+    './app.{js,ts,vue}'
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace']
+        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
       },
       colors: {
-        obsidian: {
-          50: '#f6f6f7',
-          100: '#e3e3e7',
-          200: '#c7c7cf',
-          300: '#a4a4b1',
-          400: '#7c7c8f',
-          500: '#5e5e71',
-          600: '#484858',
-          700: '#383845',
-          800: '#1d1d24',
-          900: '#0f0f13',
-          950: '#09090b'
+        ink: {
+          DEFAULT: '#14110F',
+          50: '#f7f6f5',
+          100: '#e8e5e2',
+          200: '#d0cbc5',
+          300: '#b1a89f',
+          400: '#8f8377',
+          500: '#75685c',
+          600: '#5e5248',
+          700: '#4c423b',
+          800: '#2b2522',
+          900: '#14110F',
+          950: '#0d0b0a'
         },
-        noir: {
-          accent: '#6366f1',
-          glow: '#818cf8',
-          cyan: '#22d3ee',
-          emerald: '#34d399',
-          amber: '#fbbf24',
-          rose: '#f43f5e'
-        }
-      },
-      animation: {
-        'glow-pulse': 'glowPulse 3s infinite ease-in-out',
-        'shine-sweep': 'shineSweep 2.5s infinite ease-in-out',
-        'float-slow': 'floatSlow 6s infinite ease-in-out',
-        'fade-in-up': 'fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'scale-in': 'scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'border-spin': 'borderSpin 4s linear infinite'
-      },
-      keyframes: {
-        glowPulse: {
-          '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-          '50%': { opacity: '0.8', transform: 'scale(1.05)' }
+        paper: {
+          DEFAULT: '#F7F3EC',
+          50: '#ffffff',
+          100: '#FAF8F4',
+          200: '#F7F3EC',
+          300: '#EFEAE1',
+          400: '#E3DDD1',
+          500: '#D5CDBF'
         },
-        shineSweep: {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(200%)' }
+        rust: {
+          DEFAULT: '#C1502E',
+          hover: '#A84224',
+          light: '#E26D4B',
+          soft: 'rgba(193, 80, 46, 0.12)'
         },
-        floatSlow: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' }
+        teal: {
+          deep: '#1F4B43',
+          hover: '#163832',
+          light: '#2E6E63',
+          soft: 'rgba(31, 75, 67, 0.12)'
         },
-        fadeInUp: {
-          '0%': { opacity: '0', transform: 'translateY(12px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' }
+        mustard: {
+          DEFAULT: '#E3A008',
+          dark: '#C28804',
+          soft: 'rgba(227, 160, 8, 0.12)'
         },
-        scaleIn: {
-          '0%': { opacity: '0', transform: 'scale(0.95)' },
-          '100%': { opacity: '1', transform: 'scale(1)' }
-        },
-        borderSpin: {
-          '100%': { transform: 'rotate(360deg)' }
+        brick: {
+          DEFAULT: '#8C2F1D',
+          hover: '#732516',
+          soft: 'rgba(140, 47, 29, 0.12)'
         }
       },
       boxShadow: {
-        'glow-sm': '0 0 15px -3px rgba(99, 102, 241, 0.3)',
-        'glow-md': '0 0 25px -5px rgba(99, 102, 241, 0.4)',
-        'glow-lg': '0 0 40px -10px rgba(99, 102, 241, 0.5)',
-        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+        'apple-sm': '0 2px 8px rgba(20, 17, 15, 0.04), 0 1px 2px rgba(20, 17, 15, 0.06)',
+        'apple-md': '0 8px 24px rgba(20, 17, 15, 0.06), 0 2px 6px rgba(20, 17, 15, 0.04)',
+        'apple-lg': '0 16px 40px rgba(20, 17, 15, 0.08), 0 4px 12px rgba(20, 17, 15, 0.04)',
+        'apple-dark': '0 16px 40px rgba(0, 0, 0, 0.5)'
       }
     }
   },
