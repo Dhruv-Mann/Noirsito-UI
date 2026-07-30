@@ -7,14 +7,26 @@ const { filteredComponents, searchQuery } = useRegistry()
 
 <template>
   <div class="flex flex-col gap-8 py-6">
-    <!-- Header -->
-    <div class="flex flex-col gap-2">
-      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-ink dark:text-paper">
-        Component Catalog
-      </h1>
-      <p class="text-sm text-ink/70 dark:text-paper/70 max-w-2xl leading-relaxed">
-        Browse your custom Vue 3 component registry. Select a component card to preview micro-interactions, view props specifications, and fetch CLI installation commands.
-      </p>
+    <!-- Back to Home Button & Header -->
+    <div class="flex flex-col gap-3">
+      <NuxtLink
+        to="/"
+        class="inline-flex items-center gap-2 text-xs font-semibold text-ink/75 dark:text-paper/75 hover:text-rust dark:hover:text-mustard btn-tactile w-fit px-3 py-1.5 rounded-lg border border-ink-200/60 dark:border-paper-400/15 bg-paper-100/80 dark:bg-ink-800/60"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Back to Home</span>
+      </NuxtLink>
+
+      <div class="flex flex-col gap-1">
+        <h1 class="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-ink dark:text-paper">
+          Component Catalog
+        </h1>
+        <p class="text-xs sm:text-sm text-ink/70 dark:text-paper/70 max-w-2xl leading-golden">
+          Browse your custom Vue 3 component registry. Select a component card to preview micro-interactions, view props specifications, and fetch CLI installation commands.
+        </p>
+      </div>
     </div>
 
     <!-- Layout with Sidebar -->
