@@ -19,7 +19,7 @@ import CliCopyBanner from '~/components/showcase/CliCopyBanner.vue'
 
       <!-- Subtitle Description (Moara Sans Body, Golden Line Height 1.618) -->
       <p class="text-base sm:text-lg text-ink/75 dark:text-paper/75 max-w-2xl font-sans leading-golden">
-        Noirsito.UI is an open-source component collection designed for Vue 3 and Nuxt. Copy source code directly into your project or inject via CLI with zero technical debt and 100% code ownership.
+        <strong class="font-bold text-ink dark:text-paper">Noirsito.UI</strong> is an <span class="text-ink dark:text-paper font-medium">open-source component collection</span> designed for <span class="text-rust font-semibold">Vue 3 &amp; Nuxt</span>. Copy source code directly into your project or inject via <code class="text-teal-deep dark:text-mustard font-mono font-medium px-1 py-0.5 rounded bg-teal-soft/60">CLI</code> with <span class="text-ink dark:text-paper font-semibold">zero technical debt</span> and <span class="text-rust font-semibold">100% code ownership</span>.
       </p>
 
       <!-- Primary Action: Explore components button routing to /components -->
