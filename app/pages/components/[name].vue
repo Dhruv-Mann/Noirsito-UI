@@ -9,7 +9,7 @@ import type { RegistryItem } from '~~/shared/types/registry'
 const route = useRoute()
 const componentName = computed(() => route.params.name as string)
 
-const { getComponentByName } = useRegistry()
+const { getComponentByName, getLocalRegistryItem } = useRegistry()
 
 const meta = computed(() => getComponentByName(componentName.value))
 
@@ -45,8 +45,18 @@ const DynamicDemoComponent = computed(() => {
   }
 })
 
-// Fetch detailed payload from Nitro Server API
-const { data: registryItem, pending, error } = await useFetch<RegistryItem>(`/api/registry/${componentName.value}`)
+// Fetch detailed payload reactively with instant local composable fallback
+const { data: remoteData, pending, error } = await useFetch<RegistryItem>(
+  () => `/api/registry/${componentName.value}`,
+  {
+    key: `registry-${componentName.value}`
+  }
+)
+
+const registryItem = computed<RegistryItem | null>(() => {
+  if (remoteData.value) return remoteData.value
+  return getLocalRegistryItem(componentName.value) || null
+})
 </script>
 
 <template>
@@ -61,20 +71,20 @@ const { data: registryItem, pending, error } = await useFetch<RegistryItem>(`/ap
     </div>
 
     <!-- Error State using Brick (#8C2F1D) -->
-    <div v-if="error || !registryItem" class="p-8 rounded-2xl border border-brick/40 bg-brick-soft text-center flex flex-col items-center gap-4">
+    <div v-if="!registryItem" class="p-8 rounded-2xl border border-brick/40 bg-brick-soft text-center flex flex-col items-center gap-4">
       <h2 class="text-xl font-bold text-brick">Component Not Found</h2>
       <p class="text-xs text-ink/70 dark:text-paper/70">
-        The requested component "{{ componentName }}" has not been registered in server/utils/registryData.ts yet.
+        The requested component "{{ componentName }}" has not been registered in the Noirsito.UI registry.
       </p>
       <NuxtLink to="/components">
-        <button type="button" class="px-4 py-2 rounded-xl text-xs font-semibold bg-rust hover:bg-rust-hover text-paper shadow-sm">
+        <button type="button" class="px-4 py-2 rounded-xl text-xs font-semibold bg-rust hover:bg-rust-hover text-paper shadow-sm btn-tactile">
           Back to Component Catalog
         </button>
       </NuxtLink>
     </div>
 
     <!-- Main Component Detail View -->
-    <div v-else-if="registryItem" class="flex flex-col gap-8">
+    <div v-else class="flex flex-col gap-8">
       <!-- Title Header -->
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-ink-200/50 dark:border-paper-400/10 pb-6">
         <div class="flex flex-col gap-1.5">
@@ -92,7 +102,7 @@ const { data: registryItem, pending, error } = await useFetch<RegistryItem>(`/ap
         </div>
 
         <NuxtLink to="/components">
-          <button type="button" class="px-4 py-2 rounded-xl text-xs font-semibold bg-paper-200 dark:bg-ink-800 text-ink dark:text-paper border border-ink-200/60 dark:border-paper-400/15 hover:border-rust transition-colors">
+          <button type="button" class="px-4 py-2 rounded-xl text-xs font-semibold bg-paper-200 dark:bg-ink-800 text-ink dark:text-paper border border-ink-200/60 dark:border-paper-400/15 hover:border-rust transition-colors btn-tactile">
             All Components
           </button>
         </NuxtLink>
