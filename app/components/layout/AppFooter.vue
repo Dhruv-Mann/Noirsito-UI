@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="flex flex-col gap-1 text-center md:text-left">
         <span class="font-bold text-ink dark:text-paper text-sm">
-          Noirsito<span class="text-rust">.UI</span> Registry
+          Noirsito<span class="text-rust">.UI</span>
         </span>
         <p class="text-ink/60 dark:text-paper/60 text-xs">
           Designed with Golden Ratio craft. Open-source Vue 3 & Nuxt component distribution.

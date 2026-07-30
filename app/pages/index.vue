@@ -6,10 +6,10 @@ import CliCopyBanner from '~/components/showcase/CliCopyBanner.vue'
   <div class="flex flex-col gap-20 py-12 lg:py-20 max-w-4xl mx-auto">
     <!-- Main Landing Hero (Athelas + Moara Golden Ratio Typography) -->
     <section class="flex flex-col items-center text-center gap-8">
-      <!-- Minimalist Category Tag -->
+      <!-- Minimalist Category Tag (Shorter as requested) -->
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-deep/20 bg-teal-soft text-xs font-semibold text-teal-deep dark:text-mustard">
         <span class="w-1.5 h-1.5 rounded-full bg-teal-deep dark:bg-mustard" />
-        <span>Open Source Vue 3 & Nuxt Component Registry</span>
+        <span>Vue 3 Primitives</span>
       </div>
 
       <!-- Main Display Headline (Athelas Serif, Golden Ratio Scaled) -->
@@ -19,7 +19,7 @@ import CliCopyBanner from '~/components/showcase/CliCopyBanner.vue'
 
       <!-- Subtitle Description (Moara Sans Body, Golden Line Height 1.618) -->
       <p class="text-base sm:text-lg text-ink/75 dark:text-paper/75 max-w-2xl font-sans leading-golden">
-        Noirsito.UI is an open-source component registry designed for Vue 3 and Nuxt. Copy source code directly into your project or inject via CLI with zero technical debt and 100% code ownership.
+        Noirsito.UI is an open-source component collection designed for Vue 3 and Nuxt. Copy source code directly into your project or inject via CLI with zero technical debt and 100% code ownership.
       </p>
 
       <!-- Primary Action: Explore components button routing to /components -->
@@ -91,7 +91,7 @@ import CliCopyBanner from '~/components/showcase/CliCopyBanner.vue'
             <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
           </svg>
         </div>
-        <h3 class="text-golden-h3 font-serif text-ink dark:text-paper font-semibold">Public Registry API</h3>
+        <h3 class="text-golden-h3 font-serif text-ink dark:text-paper font-semibold">Public API</h3>
         <p class="text-xs text-ink/70 dark:text-paper/70 font-sans leading-golden">
           Nitro API routes (<code class="text-teal-deep dark:text-mustard font-mono">/api/registry/[name].json</code>) serve raw file schemas for automated CLI injection.
         </p>
@@ -101,7 +101,7 @@ import CliCopyBanner from '~/components/showcase/CliCopyBanner.vue'
     <!-- Bottom Navigation Section -->
     <section class="flex flex-col items-center text-center p-8 rounded-2xl border border-ink-200/60 dark:border-paper-400/15 bg-paper-100/60 dark:bg-ink-900/40 gap-4">
       <h2 class="text-golden-h2 font-serif font-semibold text-ink dark:text-paper">
-        Ready to explore the component catalog?
+        Ready to explore components?
       </h2>
       <p class="text-xs text-ink/70 dark:text-paper/70 max-w-md font-sans">
         Browse categories, test interactive previews, and copy component source code directly.
