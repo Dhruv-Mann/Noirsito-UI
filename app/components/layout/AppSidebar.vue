@@ -47,10 +47,7 @@ const { categories, activeCategory } = useRegistry()
 
       <!-- Registry Information Callout -->
       <div class="p-3.5 rounded-lg border border-ink-200/50 dark:border-paper-400/15 bg-paper-200/60 dark:bg-ink-900/60 flex flex-col gap-1.5">
-        <span class="text-xs font-semibold text-ink dark:text-paper flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5 text-rust" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
+        <span class="text-xs font-semibold text-ink dark:text-paper">
           Direct Local Injection
         </span>
         <p class="text-[11px] text-ink/60 dark:text-paper/60 leading-relaxed">
