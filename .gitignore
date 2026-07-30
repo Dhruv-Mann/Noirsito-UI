@@ -13,6 +13,9 @@ node_modules/
 .agents
 .agents/
 AGENTS.md
+
+# Ignored local source folders
+Noir UI
 Noir UI/
 
 # Logs & environment files
