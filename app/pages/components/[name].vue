@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import ComponentPreview from '~/components/showcase/ComponentPreview.vue'
 import CliCopyBanner from '~/components/showcase/CliCopyBanner.vue'
@@ -12,6 +12,38 @@ const componentName = computed(() => route.params.name as string)
 const { getComponentByName } = useRegistry()
 
 const meta = computed(() => getComponentByName(componentName.value))
+
+// Dynamic Vue component resolver for live interactive previews
+const DynamicDemoComponent = computed(() => {
+  switch (componentName.value) {
+    case 'app-grain':
+      return defineAsyncComponent(() => import('~/components/ui/AppGrain.vue'))
+    case 'corner-stars':
+      return defineAsyncComponent(() => import('~/components/ui/CornerStarsCanvas.vue'))
+    case 'dynamic-island':
+      return defineAsyncComponent(() => import('~/components/ui/DynamicIslandNav.vue'))
+    case 'floating-skills':
+      return defineAsyncComponent(() => import('~/components/ui/FloatingSkillsPhysics.vue'))
+    case 'fractal-tree':
+      return defineAsyncComponent(() => import('~/components/ui/FractalTree.vue'))
+    case 'lissajous-orbit':
+      return defineAsyncComponent(() => import('~/components/ui/LissajousOrbit.vue'))
+    case 'page-transition-sheet':
+      return defineAsyncComponent(() => import('~/components/ui/PageTransitionSheet.vue'))
+    case 'pixel-matrix':
+      return defineAsyncComponent(() => import('~/components/ui/PixelMatrixCanvas.vue'))
+    case 'projects-showcase':
+      return defineAsyncComponent(() => import('~/components/ui/ProjectsShowcase.vue'))
+    case 'ribbon-cut':
+      return defineAsyncComponent(() => import('~/components/ui/RibbonCutCanvas.vue'))
+    case 'tech-stack':
+      return defineAsyncComponent(() => import('~/components/ui/TechStackShowcase.vue'))
+    case 'command-palette':
+      return defineAsyncComponent(() => import('~/components/ui/AppCommandPalette.vue'))
+    default:
+      return null
+  }
+})
 
 // Fetch detailed payload from Nitro Server API
 const { data: registryItem, pending, error } = await useFetch<RegistryItem>(`/api/registry/${componentName.value}`)
@@ -76,8 +108,11 @@ const { data: registryItem, pending, error } = await useFetch<RegistryItem>(`/ap
         :code="registryItem.files[0]?.content || ''"
         :componentName="registryItem.name"
       >
-        <div class="text-center text-xs text-ink/60 dark:text-paper/60 py-8">
-          Component preview for <strong class="text-ink dark:text-paper">{{ registryItem.title }}</strong>
+        <div class="w-full flex items-center justify-center min-h-[300px] overflow-hidden relative">
+          <component :is="DynamicDemoComponent" v-if="DynamicDemoComponent" />
+          <div v-else class="text-center text-xs text-ink/60 dark:text-paper/60 py-8">
+            Component preview for <strong class="text-ink dark:text-paper">{{ registryItem.title }}</strong>
+          </div>
         </div>
       </ComponentPreview>
 

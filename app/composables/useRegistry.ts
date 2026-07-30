@@ -3,9 +3,105 @@ import type { RegistryMeta, ComponentCategory, RegistryItem } from '~~/shared/ty
 
 /**
  * Global component registry state.
- * Add your component metadata entries here for search, sidebar filtering, and display.
  */
-const registryItems = ref<RegistryMeta[]>([])
+const registryItems = ref<RegistryMeta[]>([
+  {
+    name: 'corner-stars',
+    title: 'Corner Stars Canvas',
+    category: 'animations',
+    description: 'Interactive corner starfield canvas animation with constellation implosion particle dynamics.',
+    tags: ['canvas', 'particles', 'stars', 'animation'],
+    isNew: true
+  },
+  {
+    name: 'dynamic-island',
+    title: 'Dynamic Island Nav',
+    category: 'navigation',
+    description: 'Minimalist expandable top pill navigation bar with smooth tab state transitions.',
+    tags: ['navigation', 'dynamic-island', 'tabs', 'header'],
+    isNew: true
+  },
+  {
+    name: 'floating-skills',
+    title: 'Floating Skills Physics',
+    category: 'animations',
+    description: '2D physics canvas simulation rendering interactive floating skill bubbles.',
+    tags: ['physics', 'canvas', 'skills', 'bubbles'],
+    isNew: true
+  },
+  {
+    name: 'fractal-tree',
+    title: 'Fractal Tree Canvas',
+    category: 'animations',
+    description: 'Recursive mathematical fractal tree canvas rendering real-time wind motion.',
+    tags: ['canvas', 'math', 'fractal', 'interactive'],
+    isNew: true
+  },
+  {
+    name: 'lissajous-orbit',
+    title: 'Lissajous Orbit',
+    category: 'animations',
+    description: 'Harmonic Lissajous curve orbital canvas animation with smooth particle trails.',
+    tags: ['canvas', 'lissajous', 'orbit', 'particles'],
+    isNew: true
+  },
+  {
+    name: 'page-transition-sheet',
+    title: 'Page Transition Sheet',
+    category: 'modals',
+    description: 'Tactile page transition drawer sheet with backdrop blur and gesture dismissal.',
+    tags: ['sheet', 'drawer', 'modal', 'transition'],
+    isNew: true
+  },
+  {
+    name: 'pixel-matrix',
+    title: 'Pixel Matrix Canvas',
+    category: 'animations',
+    description: 'Interactive digital pixel matrix grid canvas with mouse proximity ripple effects.',
+    tags: ['canvas', 'matrix', 'pixels', 'interactive'],
+    isNew: true
+  },
+  {
+    name: 'projects-showcase',
+    title: 'Projects Showcase Deck',
+    category: 'cards',
+    description: 'Interactive project portfolio card deck with filter tags and status badges.',
+    tags: ['portfolio', 'cards', 'projects', 'grid'],
+    isNew: true
+  },
+  {
+    name: 'ribbon-cut',
+    title: 'Ribbon Cut Canvas',
+    category: 'animations',
+    description: 'Interactive ribbon-cut particle canvas with mouse slicing motion effects.',
+    tags: ['canvas', 'ribbon', 'particles', 'interactive'],
+    isNew: true
+  },
+  {
+    name: 'tech-stack',
+    title: 'Tech Stack Showcase',
+    category: 'cards',
+    description: 'Interactive tech stack matrix grid with category filters and proficiency meters.',
+    tags: ['tech-stack', 'grid', 'skills', 'showcase'],
+    isNew: true
+  },
+  {
+    name: 'command-palette',
+    title: 'App Command Palette',
+    category: 'modals',
+    description: 'Keyboard-first command palette modal container with search shortcuts.',
+    tags: ['command', 'palette', 'modal', 'keyboard'],
+    isNew: true
+  },
+  {
+    name: 'app-grain',
+    title: 'App Grain Noise Overlay',
+    category: 'animations',
+    description: 'Tactile noise texture grain overlay for modern paper & dark background aesthetics.',
+    tags: ['grain', 'noise', 'texture', 'overlay'],
+    isNew: true
+  }
+])
 
 const activeCategory = ref<ComponentCategory | 'all'>('all')
 const searchQuery = ref('')
@@ -13,13 +109,10 @@ const searchQuery = ref('')
 export function useRegistry() {
   const categories = computed(() => [
     { id: 'all', name: 'All Components', count: registryItems.value.length },
-    { id: 'buttons', name: 'Buttons', count: registryItems.value.filter(i => i.category === 'buttons').length },
+    { id: 'navigation', name: 'Navigation', count: registryItems.value.filter(i => i.category === 'navigation').length },
     { id: 'cards', name: 'Cards', count: registryItems.value.filter(i => i.category === 'cards').length },
-    { id: 'inputs', name: 'Inputs', count: registryItems.value.filter(i => i.category === 'inputs').length },
-    { id: 'modals', name: 'Modals', count: registryItems.value.filter(i => i.category === 'modals').length },
-    { id: 'badges', name: 'Badges', count: registryItems.value.filter(i => i.category === 'badges').length },
-    { id: 'tabs', name: 'Tabs & Navigation', count: registryItems.value.filter(i => i.category === 'tabs').length },
-    { id: 'animations', name: 'Animations & Text', count: registryItems.value.filter(i => i.category === 'animations').length }
+    { id: 'modals', name: 'Modals & Sheets', count: registryItems.value.filter(i => i.category === 'modals').length },
+    { id: 'animations', name: 'Animations & Canvas', count: registryItems.value.filter(i => i.category === 'animations').length }
   ])
 
   const filteredComponents = computed(() => {

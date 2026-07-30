@@ -6,6 +6,7 @@ export type ComponentCategory =
   | 'badges' 
   | 'tabs' 
   | 'animations'
+  | 'navigation'
 
 export interface RegistryFile {
   path: string
