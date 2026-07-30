@@ -24,51 +24,47 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="sticky top-0 z-40 w-full apple-glass">
+  <header class="sticky top-0 z-40 w-full minimal-glass">
     <div class="max-w-7xl mx-auto flex items-center justify-between h-14 px-4 sm:px-6 lg:px-8">
-      <!-- Left Branding -->
-      <NuxtLink to="/" class="flex items-center gap-2.5 group">
-        <div class="flex items-center justify-center w-7 h-7 rounded-lg bg-rust text-paper font-mono text-sm font-extrabold tracking-tighter shadow-sm transition-transform duration-200 group-hover:scale-105">
+      <!-- Small Logo on Top Left Corner -->
+      <NuxtLink to="/" class="flex items-center gap-2 group">
+        <div class="flex items-center justify-center w-6 h-6 rounded-md bg-rust text-paper font-mono text-xs font-bold tracking-tighter btn-tactile shadow-subtle-sm">
           N
         </div>
-        <div class="flex items-baseline gap-1.5">
-          <span class="font-bold tracking-tight text-ink text-base group-hover:text-rust transition-colors">
-            Noirsito
-          </span>
-          <span class="text-[10px] font-mono tracking-widest text-teal-deep font-semibold uppercase">
-            Registry
-          </span>
-        </div>
+        <span class="font-serif font-bold tracking-tight text-ink dark:text-paper text-lg group-hover:text-rust transition-colors">
+          Noirsito<span class="text-rust">.</span>
+        </span>
       </NuxtLink>
 
-      <!-- Center Search Command Palette Trigger -->
-      <button
-        type="button"
-        class="hidden md:flex items-center gap-2.5 px-3 py-1.5 rounded-lg border border-ink-200/60 dark:border-paper-400/20 bg-paper-100/80 dark:bg-ink-800/60 text-ink/60 dark:text-paper/60 hover:text-ink dark:hover:text-paper hover:border-rust/40 transition-all text-xs w-60 select-none shadow-apple-sm"
-        @click="isCommandPaletteOpen = true"
-      >
-        <svg class="w-3.5 h-3.5 text-teal-deep dark:text-mustard flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        <span class="flex-1 text-left font-sans">Search components...</span>
-        <kbd class="px-1.5 py-0.5 text-[10px] font-mono font-medium text-ink/50 dark:text-paper/50 bg-paper-300/60 dark:bg-ink-700/60 rounded border border-ink-200/40 dark:border-paper-400/20">⌘K</kbd>
-      </button>
+      <!-- Top Right Navigation Links with Micro & Subtle Animations -->
+      <div class="flex items-center gap-3">
+        <!-- Search Trigger Button -->
+        <button
+          type="button"
+          class="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-md border border-ink-200/60 dark:border-paper-400/20 bg-paper-100/80 dark:bg-ink-800/60 text-ink/60 dark:text-paper/60 hover:text-ink dark:hover:text-paper hover:border-rust/50 btn-tactile text-xs select-none"
+          @click="isCommandPaletteOpen = true"
+        >
+          <svg class="w-3.5 h-3.5 text-teal-deep dark:text-mustard flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <span class="font-sans text-xs">Search</span>
+          <kbd class="px-1.5 py-0.5 text-[9px] font-mono text-ink/50 dark:text-paper/50 bg-paper-300/60 dark:bg-ink-700/60 rounded">⌘K</kbd>
+        </button>
 
-      <!-- Right Navigation & Actions -->
-      <div class="flex items-center gap-2">
+        <!-- Components Main Link -->
         <NuxtLink
           to="/components"
-          class="text-xs font-semibold text-ink/70 dark:text-paper/70 hover:text-rust dark:hover:text-mustard px-3 py-1.5 rounded-md transition-colors"
+          class="text-xs font-medium text-ink/75 dark:text-paper/75 hover:text-rust dark:hover:text-mustard px-2.5 py-1 rounded-md hover:bg-paper-300/40 dark:hover:bg-ink-800/40 btn-tactile"
         >
           Components
         </NuxtLink>
 
-        <!-- GitHub Social Button -->
+        <!-- GitHub Repo Link -->
         <a
           href="https://github.com/Dhruv-Mann/noirsito-ui"
           target="_blank"
           rel="noopener noreferrer"
-          class="p-1.5 rounded-lg text-ink/70 dark:text-paper/70 hover:text-rust dark:hover:text-mustard hover:bg-paper-300/40 dark:hover:bg-ink-800/40 transition-colors"
+          class="p-1.5 rounded-md text-ink/70 dark:text-paper/70 hover:text-rust dark:hover:text-mustard hover:bg-paper-300/40 dark:hover:bg-ink-800/40 btn-tactile"
           title="GitHub Repository"
         >
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -76,11 +72,11 @@ onUnmounted(() => {
           </svg>
         </a>
 
-        <!-- Dark/Light Theme Switcher -->
+        <!-- Dark/Paper Theme Switcher -->
         <button
           type="button"
-          class="p-1.5 rounded-lg text-ink/70 dark:text-paper/70 hover:text-rust dark:hover:text-mustard hover:bg-paper-300/40 dark:hover:bg-ink-800/40 transition-colors"
-          title="Toggle Paper / Ink Theme"
+          class="p-1.5 rounded-md text-ink/70 dark:text-paper/70 hover:text-rust dark:hover:text-mustard hover:bg-paper-300/40 dark:hover:bg-ink-800/40 btn-tactile"
+          title="Toggle Theme"
           @click="toggleTheme"
         >
           <svg v-if="isDark" class="w-4 h-4 text-mustard" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -93,7 +89,7 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- Global Command Palette Modal -->
+    <!-- Command Palette Modal -->
     <CommandPalette :open="isCommandPaletteOpen" @close="isCommandPaletteOpen = false" />
   </header>
 </template>

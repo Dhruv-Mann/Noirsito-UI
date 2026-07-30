@@ -15,8 +15,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
+        serif: ['Athelas', '"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['Moara', '"Plus Jakarta Sans"', 'system-ui', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'Consolas', 'monospace']
       },
       colors: {
         ink: {
@@ -65,11 +66,12 @@ module.exports = {
           soft: 'rgba(140, 47, 29, 0.12)'
         }
       },
+      lineHeight: {
+        golden: '1.618'
+      },
       boxShadow: {
-        'apple-sm': '0 2px 8px rgba(20, 17, 15, 0.04), 0 1px 2px rgba(20, 17, 15, 0.06)',
-        'apple-md': '0 8px 24px rgba(20, 17, 15, 0.06), 0 2px 6px rgba(20, 17, 15, 0.04)',
-        'apple-lg': '0 16px 40px rgba(20, 17, 15, 0.08), 0 4px 12px rgba(20, 17, 15, 0.04)',
-        'apple-dark': '0 16px 40px rgba(0, 0, 0, 0.5)'
+        'subtle-sm': '0 2px 8px rgba(20, 17, 15, 0.04)',
+        'subtle-md': '0 8px 24px rgba(20, 17, 15, 0.06)'
       }
     }
   },

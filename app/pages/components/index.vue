@@ -60,7 +60,7 @@ const { filteredComponents, searchQuery } = useRegistry()
             :to="`/components/${comp.name}`"
             class="group"
           >
-            <div class="apple-card h-full flex flex-col justify-between p-6 rounded-2xl">
+            <div class="minimal-card h-full flex flex-col justify-between p-6 rounded-2xl">
               <div class="flex flex-col gap-2">
                 <div class="flex items-center justify-between">
                   <span class="px-2 py-0.5 text-[10px] font-mono uppercase font-bold text-teal-deep dark:text-mustard bg-teal-soft/60 rounded border border-teal-deep/20">

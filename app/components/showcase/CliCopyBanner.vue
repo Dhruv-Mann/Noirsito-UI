@@ -22,7 +22,7 @@ function handleCopy() {
 </script>
 
 <template>
-  <div class="relative group flex flex-col sm:flex-row items-center justify-between gap-3 p-3 px-4 rounded-xl border border-rust/30 bg-rust-soft/50 dark:bg-rust-soft/20 backdrop-blur-md shadow-apple-sm">
+  <div class="relative group flex flex-col sm:flex-row items-center justify-between gap-3 p-3 px-4 rounded-xl border border-rust/30 bg-rust-soft/50 dark:bg-rust-soft/20 backdrop-blur-md shadow-subtle-sm">
     <div class="flex items-center gap-3 w-full sm:w-auto">
       <div class="flex items-center justify-center w-7 h-7 rounded-lg bg-teal-deep text-paper font-mono text-xs font-bold flex-shrink-0 shadow-sm">
         &gt;_

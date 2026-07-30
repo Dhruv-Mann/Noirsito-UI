@@ -54,7 +54,7 @@ function handleCopy() {
     </div>
 
     <!-- Interactive Component Preview Box Shell -->
-    <div class="rounded-2xl border border-ink-200/60 dark:border-paper-400/15 bg-paper-100/80 dark:bg-ink-900/60 overflow-hidden shadow-apple-md">
+    <div class="rounded-2xl border border-ink-200/60 dark:border-paper-400/15 bg-paper-100/80 dark:bg-ink-900/60 overflow-hidden shadow-subtle-md">
       <!-- Toolbar controls -->
       <div class="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 bg-paper-200/60 dark:bg-ink-950/80 border-b border-ink-200/50 dark:border-paper-400/10 select-none">
         <!-- Left: Preview vs Code Tab Switcher -->

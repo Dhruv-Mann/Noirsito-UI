@@ -7,7 +7,7 @@ const { categories, activeCategory } = useRegistry()
 
 <template>
   <aside class="w-64 flex-shrink-0 hidden lg:block">
-    <div class="sticky top-20 flex flex-col gap-6 p-4 rounded-xl border border-ink-200/60 dark:border-paper-400/20 bg-paper-100/70 dark:bg-ink-800/40 backdrop-blur-md shadow-apple-sm">
+    <div class="sticky top-20 flex flex-col gap-6 p-4 rounded-xl border border-ink-200/60 dark:border-paper-400/20 bg-paper-100/70 dark:bg-ink-800/40 backdrop-blur-md shadow-subtle-sm">
       <div class="flex items-center justify-between px-1">
         <span class="text-[11px] font-bold tracking-wider text-ink/50 dark:text-paper/50 uppercase">Categories</span>
         <span class="px-2 py-0.5 text-[10px] font-mono font-semibold text-rust bg-rust-soft rounded-md border border-rust/20">

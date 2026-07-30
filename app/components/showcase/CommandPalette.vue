@@ -52,7 +52,7 @@ onUnmounted(() => {
         class="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-ink/70 dark:bg-ink-950/80 backdrop-blur-md"
         @click.self="emit('close')"
       >
-        <div class="relative w-full max-w-xl rounded-2xl border border-ink-200/80 dark:border-paper-400/20 bg-paper-100 dark:bg-ink-900 shadow-apple-lg overflow-hidden flex flex-col">
+        <div class="relative w-full max-w-xl rounded-2xl border border-ink-200/80 dark:border-paper-400/20 bg-paper-100 dark:bg-ink-900 shadow-subtle-md overflow-hidden flex flex-col">
           <!-- Search Header -->
           <div class="flex items-center gap-3 px-4 py-3.5 border-b border-ink-200/50 dark:border-paper-400/10">
             <svg class="w-4 h-4 text-rust flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
