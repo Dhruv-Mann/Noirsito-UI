@@ -32,7 +32,7 @@ onUnmounted(() => {
           N
         </div>
         <span class="font-serif font-bold tracking-tight text-ink dark:text-paper text-lg group-hover:text-rust transition-colors">
-          Noirsito<span class="text-rust">.</span>
+          Noirsito<span class="text-rust">.UI</span>
         </span>
       </NuxtLink>
 
