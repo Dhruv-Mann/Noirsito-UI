@@ -1,5 +1,14 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import CliCopyBanner from '~/components/showcase/CliCopyBanner.vue'
+
+const interactiveActive = ref(false)
+const interactiveCount = ref(0)
+
+function handleTeaserClick() {
+  interactiveActive.value = !interactiveActive.value
+  interactiveCount.value++
+}
 </script>
 
 <template>
@@ -56,6 +65,34 @@ import CliCopyBanner from '~/components/showcase/CliCopyBanner.vue'
       <!-- Quick Terminal Command Banner -->
       <div class="w-full max-w-lg mt-2">
         <CliCopyBanner componentName="my-component" />
+      </div>
+
+      <!-- Live Interactive Micro-Preview Teaser Widget -->
+      <div class="w-full max-w-lg mt-2 p-4 rounded-xl border border-ink-200/50 dark:border-paper-400/10 bg-paper-100/40 dark:bg-ink-900/40 backdrop-blur-sm flex flex-col items-center gap-3">
+        <div class="flex items-center justify-between w-full text-[11px] font-mono text-ink/60 dark:text-paper/60">
+          <span class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-teal-deep dark:bg-mustard animate-pulse" />
+            Interactive Micro-Teaser
+          </span>
+          <span class="text-rust">Click counter: {{ interactiveCount }}</span>
+        </div>
+
+        <button
+          type="button"
+          class="w-full py-2.5 px-4 rounded-lg text-xs font-semibold btn-tactile flex items-center justify-between transition-all select-none"
+          :class="interactiveActive ? 'bg-teal-deep text-paper shadow-sm' : 'bg-paper-200 dark:bg-ink-800 text-ink dark:text-paper border border-ink-200/60 dark:border-paper-400/15'"
+          @click="handleTeaserClick"
+        >
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-rust" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+            </svg>
+            <span>{{ interactiveActive ? 'Tactile State Active' : 'Test Micro-Interaction Feedback' }}</span>
+          </div>
+          <span class="px-2 py-0.5 text-[10px] font-mono rounded bg-paper/20 text-current font-bold">
+            {{ interactiveActive ? 'ACTIVE' : 'IDLE' }}
+          </span>
+        </button>
       </div>
     </section>
 
