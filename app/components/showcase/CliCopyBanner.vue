@@ -38,8 +38,6 @@ function handleCopy() {
             {{ props.componentName }}
           </span>
         </div>
-
-        <span class="w-1.5 h-3.5 bg-rust/80 animate-pulse inline-block align-middle ml-0.5" />
       </div>
 
       <!-- Minimal Tactile Copy Button -->
