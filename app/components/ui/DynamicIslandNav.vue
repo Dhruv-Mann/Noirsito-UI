@@ -1,27 +1,29 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
-const props = defineProps<{
-  activeTab?: 'home' | 'tech-stack' | 'projects'
-}>()
+const props = withDefaults(defineProps<{
+  activeTab?: 'home' | 'tech-stack' | 'projects' | 'commands'
+}>(), {
+  activeTab: 'home'
+})
 
 const emit = defineEmits<{
   (e: 'navigate', tab: 'home' | 'tech-stack' | 'projects' | 'commands'): void
 }>()
 
 const isHovered = ref(false)
+const currentActiveTab = ref<'home' | 'tech-stack' | 'projects' | 'commands'>(props.activeTab)
 
 const currentTitle = computed(() => {
-  if (props.activeTab === 'projects') return 'PROJECTS'
-  if (props.activeTab === 'tech-stack') return 'TECH STACK'
+  if (currentActiveTab.value === 'projects') return 'PROJECTS'
+  if (currentActiveTab.value === 'tech-stack') return 'STACK'
+  if (currentActiveTab.value === 'commands') return 'COMMANDS'
   return 'HUB'
 })
 
 function navigateTo(tab: 'home' | 'tech-stack' | 'projects' | 'commands') {
+  currentActiveTab.value = tab
   emit('navigate', tab)
-  if (tab === 'commands' && typeof window !== 'undefined') {
-    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))
-  }
 }
 </script>
 
@@ -46,7 +48,7 @@ function navigateTo(tab: 'home' | 'tech-stack' | 'projects' | 'commands') {
       <div v-else key="expanded" class="island-expanded-content">
         <button
           class="island-nav-btn"
-          :class="{ active: activeTab === 'home' }"
+          :class="{ active: currentActiveTab === 'home' }"
           @click="navigateTo('home')"
         >
           <span class="btn-prefix">01</span>
@@ -55,7 +57,7 @@ function navigateTo(tab: 'home' | 'tech-stack' | 'projects' | 'commands') {
 
         <button
           class="island-nav-btn"
-          :class="{ active: activeTab === 'tech-stack' }"
+          :class="{ active: currentActiveTab === 'tech-stack' }"
           @click="navigateTo('tech-stack')"
         >
           <span class="btn-prefix">02</span>
@@ -64,7 +66,7 @@ function navigateTo(tab: 'home' | 'tech-stack' | 'projects' | 'commands') {
 
         <button
           class="island-nav-btn"
-          :class="{ active: activeTab === 'projects' }"
+          :class="{ active: currentActiveTab === 'projects' }"
           @click="navigateTo('projects')"
         >
           <span class="btn-prefix">03</span>
@@ -73,6 +75,7 @@ function navigateTo(tab: 'home' | 'tech-stack' | 'projects' | 'commands') {
 
         <button
           class="island-nav-btn"
+          :class="{ active: currentActiveTab === 'commands' }"
           @click="navigateTo('commands')"
         >
           <span class="btn-prefix">04</span>
