@@ -2,6 +2,9 @@
   "name": "noirsito-ui",
   "private": true,
   "type": "module",
+  "bin": {
+    "noirsito-ui": "./bin/cli.mjs"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
