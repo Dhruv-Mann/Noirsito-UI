@@ -92,7 +92,7 @@ const registryItem = computed<RegistryItem | null>(() => {
             <h1 class="text-3xl font-extrabold tracking-tight text-ink dark:text-paper">
               {{ registryItem.title }}
             </h1>
-            <span class="px-2.5 py-0.5 text-xs font-mono uppercase font-bold text-teal-deep dark:text-mustard bg-teal-soft/60 rounded-full border border-teal-deep/20">
+            <span class="px-2.5 py-0.5 text-xs font-mono uppercase font-bold text-rust dark:text-mustard bg-rust-soft/80 dark:bg-ink-800 rounded-full border border-rust/30 dark:border-mustard/30">
               {{ registryItem.category }}
             </span>
           </div>

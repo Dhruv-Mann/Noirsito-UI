@@ -75,7 +75,7 @@ const { filteredComponents, searchQuery } = useRegistry()
             <div class="minimal-card h-full flex flex-col justify-between p-6 rounded-2xl">
               <div class="flex flex-col gap-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2 py-0.5 text-[10px] font-mono uppercase font-bold text-teal-deep dark:text-mustard bg-teal-soft/60 rounded border border-teal-deep/20">
+                  <span class="px-2 py-0.5 text-[10px] font-mono uppercase font-bold text-rust dark:text-mustard bg-rust-soft/80 dark:bg-ink-800 rounded border border-rust/30 dark:border-mustard/30">
                     {{ comp.category }}
                   </span>
                   <span v-if="comp.isNew" class="px-2 py-0.5 text-[10px] font-bold text-rust bg-rust-soft rounded-full border border-rust/20">NEW</span>

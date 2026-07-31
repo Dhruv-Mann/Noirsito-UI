@@ -88,7 +88,7 @@ onUnmounted(() => {
                   {{ item.description }}
                 </span>
               </div>
-              <span class="px-2 py-0.5 text-[10px] uppercase font-semibold text-teal-deep dark:text-mustard bg-teal-soft/60 dark:bg-mustard-soft/60 rounded-md border border-teal-deep/20 dark:border-mustard/20">
+              <span class="px-2 py-0.5 text-[10px] uppercase font-semibold text-rust dark:text-mustard bg-rust-soft/80 dark:bg-ink-800 rounded-md border border-rust/30 dark:border-mustard/30">
                 {{ item.category }}
               </span>
             </button>

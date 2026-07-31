@@ -16,8 +16,8 @@ function handleTeaserClick() {
     <!-- Main Landing Hero (Athelas + Moara Golden Ratio Typography) -->
     <section class="flex flex-col items-center text-center gap-8">
       <!-- Minimalist Category Tag -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-deep/20 bg-teal-soft text-xs font-semibold text-teal-deep dark:text-mustard">
-        <span class="w-1.5 h-1.5 rounded-full bg-teal-deep dark:bg-mustard" />
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-rust/30 dark:border-mustard/30 bg-rust-soft/80 dark:bg-ink-800 text-xs font-semibold text-rust dark:text-mustard">
+        <span class="w-1.5 h-1.5 rounded-full bg-rust dark:bg-mustard" />
         <span>Vue 3 Primitives</span>
       </div>
 
@@ -28,7 +28,7 @@ function handleTeaserClick() {
 
       <!-- Subtitle Description (Moara Sans Body, Golden Line Height 1.618) -->
       <p class="text-base sm:text-lg text-ink/75 dark:text-paper/75 max-w-2xl font-sans leading-golden">
-        <strong class="font-bold text-ink dark:text-paper">Noirsito.UI</strong> is an <span class="text-ink dark:text-paper font-medium">open-source component collection</span> designed for <span class="text-rust font-semibold">Vue 3 &amp; Nuxt</span>. Copy source code directly into your project or inject via <code class="text-teal-deep dark:text-mustard font-mono font-medium px-1 py-0.5 rounded bg-teal-soft/60">CLI</code> with <span class="text-ink dark:text-paper font-semibold">zero technical debt</span> and <span class="text-rust font-semibold">100% code ownership</span>.
+        <strong class="font-bold text-ink dark:text-paper">Noirsito.UI</strong> is an <span class="text-ink dark:text-paper font-medium">open-source component collection</span> designed for <span class="text-rust font-semibold">Vue 3 &amp; Nuxt</span>. Copy source code directly into your project or inject via <code class="text-rust dark:text-mustard font-mono font-medium px-1.5 py-0.5 rounded bg-rust-soft/80 dark:bg-ink-800 border border-rust/20 dark:border-mustard/20">CLI</code> with <span class="text-ink dark:text-paper font-semibold">zero technical debt</span> and <span class="text-rust font-semibold">100% code ownership</span>.
       </p>
 
       <!-- Primary Action: Explore components button routing to /components -->
