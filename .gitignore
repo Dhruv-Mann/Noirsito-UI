@@ -1,6 +1,7 @@
 # Nuxt 3 / 4 & Nitro build outputs
 .nuxt/
 .output/
+.vercel
 dist/
 .nitro/
 .cache/

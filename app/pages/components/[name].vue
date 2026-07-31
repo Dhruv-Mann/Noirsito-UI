@@ -32,12 +32,8 @@ const DynamicDemoComponent = computed(() => {
       return defineAsyncComponent(() => import('~/components/ui/PageTransitionSheet.vue'))
     case 'pixel-matrix':
       return defineAsyncComponent(() => import('~/components/ui/PixelMatrixCanvas.vue'))
-    case 'projects-showcase':
-      return defineAsyncComponent(() => import('~/components/ui/ProjectsShowcase.vue'))
     case 'ribbon-cut':
       return defineAsyncComponent(() => import('~/components/ui/RibbonCutCanvas.vue'))
-    case 'tech-stack':
-      return defineAsyncComponent(() => import('~/components/ui/TechStackShowcase.vue'))
     case 'command-palette':
       return defineAsyncComponent(() => import('~/components/ui/AppCommandPalette.vue'))
     default:
