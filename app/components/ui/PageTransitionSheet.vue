@@ -5,7 +5,7 @@
     @mousemove="handleMouseMove"
     @mousedown="handleMouseDown"
     @mouseup="handleMouseUp"
-    @wheel="handleWheel"
+    @wheel.prevent="handleWheel"
     @touchstart="handleTouchStart"
     @touchmove="handleTouchMove"
   >
@@ -278,6 +278,7 @@ function handleMouseDown() { isMouseDown.value = true }
 function handleMouseUp() { isMouseDown.value = false }
 
 function handleWheel(e: WheelEvent) {
+  e.preventDefault()
   accumScroll += e.deltaY * 0.45
   accumScroll = Math.max(0, Math.min(maxScroll, accumScroll))
   scrollProgress.value = accumScroll / maxScroll
@@ -469,6 +470,7 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  overscroll-behavior: contain;
   transition: background 0.42s cubic-bezier(0.16, 1, 0.3, 1), 
               border-color 0.42s ease, 
               box-shadow 0.42s ease;

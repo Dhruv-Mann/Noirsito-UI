@@ -375,6 +375,7 @@ function handleTouchEnd() {
   background: #080305;
   color: #FAFAFA;
   overflow-y: auto;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
   align-items: center;

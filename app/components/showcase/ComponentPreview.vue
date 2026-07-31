@@ -193,7 +193,7 @@ function handleCopy() {
               : 'bg-paper border-ink-200/60 text-ink shadow-inner',
             viewportWidthClass
           )"
-          style="contain: paint layout; transform: translateZ(0);"
+          style="contain: paint layout; overscroll-behavior: contain; transform: translateZ(0);"
         >
           <slot />
         </div>

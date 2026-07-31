@@ -175,6 +175,7 @@ const stackCategories: StackCategory[] = [
   background: #080305;
   color: #FAFAFA;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .noise-overlay {
