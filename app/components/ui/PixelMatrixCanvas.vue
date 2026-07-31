@@ -5,6 +5,15 @@ const props = defineProps<{
   isStarted?: boolean
 }>()
 
+const internalStarted = ref(props.isStarted ?? false)
+watch(() => props.isStarted, (val) => {
+  if (val !== undefined) internalStarted.value = val
+})
+
+function handleStart() {
+  internalStarted.value = true
+}
+
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 let animationFrameId: number | null = null
 
@@ -164,11 +173,12 @@ function handleCanvasClick(e: MouseEvent) {
   const canvas = canvasRef.value
   if (!canvas) return
 
-  // Bail out if click is outside the preview canvas bounding box
   const rect = canvas.getBoundingClientRect()
   const relX = e.clientX - rect.left
   const relY = e.clientY - rect.top
   if (relX < 0 || relY < 0 || relX > rect.width || relY > rect.height) return
+
+  handleStart()
 
   // Scale to canvas buffer coordinates
   const scaleX = width / rect.width
@@ -339,7 +349,7 @@ function render(time: number) {
     }
   }
 
-  if (props.isStarted) {
+  if (internalStarted.value) {
     if (!startTime) startTime = time
     const elapsed = (time - startTime) / 1000
 
@@ -402,7 +412,7 @@ onMounted(() => {
   setTimeout(initDeterministicGrid, 50)
 
   autoTimer = window.setInterval(() => {
-    if (!props.isStarted && !isHovered.value) {
+    if (!internalStarted.value && !isHovered.value) {
       triggerScramble()
     }
   }, 4000)
@@ -426,7 +436,7 @@ onUnmounted(() => {
     <canvas ref="canvasRef" class="pixel-canvas" />
 
     <Transition name="fade">
-      <div v-if="!isStarted" class="click-prompt-overlay">
+      <div v-if="!internalStarted" class="click-prompt-overlay" @click="handleStart">
         <div class="prompt-content">
           <div class="jumping-cursor">
             <svg viewBox="0 0 24 24" width="32" height="32" fill="#AE3B8B">
