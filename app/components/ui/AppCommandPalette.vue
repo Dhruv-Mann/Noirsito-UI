@@ -70,7 +70,9 @@ const actions: ActionItem[] = [
     hasCopy: true,
     copyValue: 'hello@example.com',
     handler: () => {
-      window.location.href = 'mailto:hello@example.com'
+      emit('selectCommand', 'email')
+      copiedMessage.value = 'Copied hello@example.com'
+      setTimeout(() => { copiedMessage.value = '' }, 2000)
     }
   },
   {
@@ -80,7 +82,9 @@ const actions: ActionItem[] = [
     category: 'CONNECTS',
     icon: 'github',
     handler: () => {
-      window.open('https://github.com', '_blank')
+      emit('selectCommand', 'github')
+      copiedMessage.value = 'Selected GitHub Action'
+      setTimeout(() => { copiedMessage.value = '' }, 2000)
     }
   },
   {
@@ -90,7 +94,9 @@ const actions: ActionItem[] = [
     category: 'CONNECTS',
     icon: 'linkedin',
     handler: () => {
-      window.open('https://www.linkedin.com', '_blank')
+      emit('selectCommand', 'linkedin')
+      copiedMessage.value = 'Selected LinkedIn Action'
+      setTimeout(() => { copiedMessage.value = '' }, 2000)
     }
   },
   {
@@ -100,7 +106,9 @@ const actions: ActionItem[] = [
     category: 'CONNECTS',
     icon: 'x',
     handler: () => {
-      window.open('https://x.com', '_blank')
+      emit('selectCommand', 'twitter')
+      copiedMessage.value = 'Selected Twitter Action'
+      setTimeout(() => { copiedMessage.value = '' }, 2000)
     }
   },
   {
@@ -109,7 +117,9 @@ const actions: ActionItem[] = [
     category: 'REPOSITORIES',
     icon: 'repo',
     handler: () => {
-      window.open('https://github.com/example/repository', '_blank')
+      emit('selectCommand', 'repo')
+      copiedMessage.value = 'Selected Repository Action'
+      setTimeout(() => { copiedMessage.value = '' }, 2000)
     }
   }
 ]
