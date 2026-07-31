@@ -94,8 +94,26 @@ function handleResize() {
 }
 
 function handleMouseMove(e: MouseEvent) {
-  mouseX = e.clientX
-  mouseY = e.clientY
+  const canvas = canvasEl.value
+  if (!canvas) return
+
+  // Bail out immediately if cursor is outside the canvas bounding box
+  const rect = canvas.getBoundingClientRect()
+  const relX = e.clientX - rect.left
+  const relY = e.clientY - rect.top
+
+  if (relX < 0 || relY < 0 || relX > rect.width || relY > rect.height) {
+    mouseX = -1000
+    mouseY = -1000
+    lastHoveredSlot = -1
+    return
+  }
+
+  // Scale from CSS px to canvas buffer px
+  const scaleX = width / rect.width
+  const scaleY = height / rect.height
+  mouseX = relX * scaleX
+  mouseY = relY * scaleY
 
   if (props.isStarted || isCollapsing) return
 

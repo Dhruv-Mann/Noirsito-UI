@@ -187,7 +187,7 @@ function handleCopy() {
           v-if="activeTab === 'preview'"
           :key="resetKey"
           :class="cn(
-            'w-full flex items-center justify-center p-4 rounded-xl min-h-[360px] h-[440px] max-h-[500px] transition-all duration-200 border relative overflow-hidden isolate transform-gpu',
+            'w-full flex items-center justify-center p-4 rounded-xl min-h-[460px] h-[540px] max-h-[600px] transition-all duration-200 border relative overflow-hidden isolate transform-gpu',
             previewTheme === 'dark'
               ? 'bg-ink border-white/10 text-paper'
               : 'bg-paper border-ink-200/60 text-ink shadow-inner',

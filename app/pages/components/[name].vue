@@ -118,7 +118,7 @@ const registryItem = computed<RegistryItem | null>(() => {
         :code="registryItem.files[0]?.content || ''"
         :componentName="registryItem.name"
       >
-        <div class="w-full h-full min-h-[360px] max-h-[460px] flex items-center justify-center overflow-hidden relative isolate">
+        <div class="w-full h-full min-h-[460px] max-h-[600px] flex items-center justify-center overflow-hidden relative isolate">
           <component :is="DynamicDemoComponent" v-if="DynamicDemoComponent" />
           <div v-else class="text-center text-xs text-ink/60 dark:text-paper/60 py-8">
             Component preview for <strong class="text-ink dark:text-paper">{{ registryItem.title }}</strong>

@@ -137,37 +137,48 @@ function handleResize() {
   initDeterministicGrid()
 }
 
-let isCursorInFooter = false
 
 function handleMouseMove(e: MouseEvent) {
-  mouseX = e.clientX
-  mouseY = e.clientY
+  const canvas = canvasRef.value
+  if (!canvas) return
 
-  if (typeof document !== 'undefined') {
-    const footerEl = document.querySelector('.home-footer')
-    if (footerEl) {
-      const rect = footerEl.getBoundingClientRect()
-      isCursorInFooter = e.clientY >= rect.top && e.clientY <= rect.bottom && e.clientX >= rect.left && e.clientX <= rect.right
-    } else {
-      isCursorInFooter = false
-    }
+  const rect = canvas.getBoundingClientRect()
+  const relX = e.clientX - rect.left
+  const relY = e.clientY - rect.top
+
+  // Bail out if cursor is outside the preview canvas bounding box
+  if (relX < 0 || relY < 0 || relX > rect.width || relY > rect.height) {
+    mouseX = -1000
+    mouseY = -1000
+    return
   }
+
+  // Scale CSS px coordinates to canvas buffer coordinates
+  const scaleX = width / rect.width
+  const scaleY = height / rect.height
+  mouseX = relX * scaleX
+  mouseY = relY * scaleY
 }
 
 function handleCanvasClick(e: MouseEvent) {
-  if (typeof document !== 'undefined') {
-    const footerEl = document.querySelector('.home-footer')
-    if (footerEl) {
-      const rect = footerEl.getBoundingClientRect()
-      if (e.clientY >= rect.top && e.clientY <= rect.bottom && e.clientX >= rect.left && e.clientX <= rect.right) {
-        return
-      }
-    }
-  }
+  const canvas = canvasRef.value
+  if (!canvas) return
+
+  // Bail out if click is outside the preview canvas bounding box
+  const rect = canvas.getBoundingClientRect()
+  const relX = e.clientX - rect.left
+  const relY = e.clientY - rect.top
+  if (relX < 0 || relY < 0 || relX > rect.width || relY > rect.height) return
+
+  // Scale to canvas buffer coordinates
+  const scaleX = width / rect.width
+  const scaleY = height / rect.height
+  const canvasX = relX * scaleX
+  const canvasY = relY * scaleY
 
   shockwaves.push({
-    x: e.clientX,
-    y: e.clientY,
+    x: canvasX,
+    y: canvasY,
     radius: 0,
     maxRadius: Math.max(width, height) * 0.75,
     speed: 18
@@ -178,8 +189,8 @@ function handleCanvasClick(e: MouseEvent) {
     const angle = Math.random() * Math.PI * 2
     const speed = 2.5 + Math.random() * 6.5
     particles.push({
-      x: e.clientX,
-      y: e.clientY,
+      x: canvasX,
+      y: canvasY,
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
       size: 2 + Math.random() * 3,
@@ -345,7 +356,7 @@ function render(time: number) {
         const dist = Math.sqrt(dx * dx + dy * dy)
         let opacityMultiplier = 1
 
-        if (!isCursorInFooter && dist < 140) {
+        if (dist < 140) {
           opacityMultiplier = 1.3 - (dist / 140) * 0.3
         }
 
