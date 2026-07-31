@@ -45,23 +45,11 @@ const metadata: Record<string, { title: string; category: any; description: stri
     description: 'Interactive digital pixel matrix grid canvas with mouse proximity ripple effects.',
     file: 'PixelMatrixCanvas.vue'
   },
-  'projects-showcase': {
-    title: 'Projects Showcase Deck',
-    category: 'cards',
-    description: 'Interactive project portfolio card deck with filter tags and status badges.',
-    file: 'ProjectsShowcase.vue'
-  },
   'ribbon-cut': {
     title: 'Ribbon Cut Canvas',
     category: 'animations',
     description: 'Interactive ribbon-cut particle canvas with mouse slicing motion effects.',
     file: 'RibbonCutCanvas.vue'
-  },
-  'tech-stack': {
-    title: 'Tech Stack Showcase',
-    category: 'cards',
-    description: 'Interactive tech stack matrix grid with category filters and proficiency meters.',
-    file: 'TechStackShowcase.vue'
   },
   'command-palette': {
     title: 'App Command Palette',

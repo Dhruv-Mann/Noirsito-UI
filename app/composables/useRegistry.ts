@@ -59,27 +59,11 @@ const registryItems = ref<RegistryMeta[]>([
     isNew: true
   },
   {
-    name: 'projects-showcase',
-    title: 'Projects Showcase Deck',
-    category: 'cards',
-    description: 'Interactive project portfolio card deck with filter tags and status badges.',
-    tags: ['portfolio', 'cards', 'projects', 'grid'],
-    isNew: true
-  },
-  {
     name: 'ribbon-cut',
     title: 'Ribbon Cut Canvas',
     category: 'animations',
     description: 'Interactive ribbon-cut particle canvas with mouse slicing motion effects.',
     tags: ['canvas', 'ribbon', 'particles', 'interactive'],
-    isNew: true
-  },
-  {
-    name: 'tech-stack',
-    title: 'Tech Stack Showcase',
-    category: 'cards',
-    description: 'Interactive tech stack matrix grid with category filters and proficiency meters.',
-    tags: ['tech-stack', 'grid', 'skills', 'showcase'],
     isNew: true
   },
   {
@@ -108,9 +92,7 @@ const fileMap: Record<string, string> = {
   'lissajous-orbit': 'LissajousOrbit.vue',
   'page-transition-sheet': 'PageTransitionSheet.vue',
   'pixel-matrix': 'PixelMatrixCanvas.vue',
-  'projects-showcase': 'ProjectsShowcase.vue',
   'ribbon-cut': 'RibbonCutCanvas.vue',
-  'tech-stack': 'TechStackShowcase.vue',
   'command-palette': 'AppCommandPalette.vue',
   'app-grain': 'AppGrain.vue'
 }
