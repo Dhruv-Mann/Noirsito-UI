@@ -1,7 +1,6 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import type { RegistryItem } from '~~/shared/types/registry'
-
-// Native Vite raw glob import for all UI Vue files
-const rawFiles = import.meta.glob('~/components/ui/*.vue', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
 
 const metadata: Record<string, { title: string; category: any; description: string; file: string }> = {
   'corner-stars': {
@@ -82,8 +81,15 @@ export function getRegistryItem(name: string): RegistryItem | null {
   const meta = metadata[name]
   if (!meta) return null
 
-  const globKey = Object.keys(rawFiles).find(k => k.endsWith(meta.file))
-  const content = globKey ? rawFiles[globKey] : ''
+  let content = ''
+  try {
+    const filePath = path.resolve(process.cwd(), 'app/components/ui', meta.file)
+    if (fs.existsSync(filePath)) {
+      content = fs.readFileSync(filePath, 'utf8')
+    }
+  } catch (err) {
+    console.error(`[Registry] Error reading file ${meta.file}:`, err)
+  }
 
   return {
     name,

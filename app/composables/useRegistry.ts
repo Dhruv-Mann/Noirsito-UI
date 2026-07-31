@@ -1,8 +1,6 @@
 import { ref, computed } from 'vue'
 import type { RegistryMeta, ComponentCategory, RegistryItem } from '~~/shared/types/registry'
 
-const rawFiles = import.meta.glob('~/components/ui/*.vue', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
-
 const registryItems = ref<RegistryMeta[]>([
   {
     name: 'corner-stars',
@@ -150,9 +148,6 @@ export function useRegistry() {
     if (!meta) return undefined
 
     const fileName = fileMap[name]
-    const globKey = Object.keys(rawFiles).find(k => k.endsWith(fileName))
-    const content = globKey ? rawFiles[globKey] : ''
-
     return {
       name: meta.name,
       title: meta.title,
@@ -162,7 +157,7 @@ export function useRegistry() {
         {
           path: `components/ui/${fileName}`,
           type: 'registry:ui',
-          content
+          content: ''
         }
       ]
     }
