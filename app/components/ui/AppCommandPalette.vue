@@ -64,52 +64,52 @@ const actions: ActionItem[] = [
   {
     id: 'email',
     title: 'Send Email',
-    subtitle: 'dhruvmann139@gmail.com',
+    subtitle: 'hello@example.com',
     category: 'CONNECTS',
     icon: 'mail',
     hasCopy: true,
-    copyValue: 'dhruvmann139@gmail.com',
+    copyValue: 'hello@example.com',
     handler: () => {
-      window.location.href = 'mailto:dhruvmann139@gmail.com'
+      window.location.href = 'mailto:hello@example.com'
     }
   },
   {
     id: 'github',
     title: 'GitHub Profile',
-    subtitle: '@Dhruv-Mann',
+    subtitle: '@username',
     category: 'CONNECTS',
     icon: 'github',
     handler: () => {
-      window.open('https://github.com/Dhruv-Mann', '_blank')
+      window.open('https://github.com', '_blank')
     }
   },
   {
     id: 'linkedin',
     title: 'LinkedIn Profile',
-    subtitle: 'in/dhruv-mann',
+    subtitle: 'in/username',
     category: 'CONNECTS',
     icon: 'linkedin',
     handler: () => {
-      window.open('https://www.linkedin.com/in/dhruv-mann', '_blank')
+      window.open('https://www.linkedin.com', '_blank')
     }
   },
   {
     id: 'twitter',
     title: 'Twitter / X Profile',
-    subtitle: '@DhruvMann64',
+    subtitle: '@username',
     category: 'CONNECTS',
     icon: 'x',
     handler: () => {
-      window.open('https://x.com/DhruvMann64', '_blank')
+      window.open('https://x.com', '_blank')
     }
   },
   {
     id: 'repo',
-    title: 'Digital Hub Repository',
+    title: 'Component Repository',
     category: 'REPOSITORIES',
     icon: 'repo',
     handler: () => {
-      window.open('https://github.com/Dhruv-Mann/Noirsito-Hub', '_blank')
+      window.open('https://github.com/example/repository', '_blank')
     }
   }
 ]

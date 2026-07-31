@@ -12,9 +12,9 @@
 
       <div class="flex flex-wrap items-center gap-6 font-medium text-ink/70 dark:text-paper/70">
         <NuxtLink to="/components" class="hover:text-rust dark:hover:text-mustard transition-colors">Components</NuxtLink>
-        <a href="https://github.com/Dhruv-Mann" target="_blank" rel="noopener noreferrer" class="hover:text-rust dark:hover:text-mustard transition-colors">GitHub</a>
-        <a href="https://x.com/DhruvMann64" target="_blank" rel="noopener noreferrer" class="hover:text-rust dark:hover:text-mustard transition-colors">Twitter</a>
-        <a href="https://www.linkedin.com/in/dhruv-mann" target="_blank" rel="noopener noreferrer" class="hover:text-rust dark:hover:text-mustard transition-colors">LinkedIn</a>
+        <a href="https://github.com/Dhruv-Mann/noirsito-ui" target="_blank" rel="noopener noreferrer" class="hover:text-rust dark:hover:text-mustard transition-colors">GitHub</a>
+        <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="hover:text-rust dark:hover:text-mustard transition-colors">Twitter</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-rust dark:hover:text-mustard transition-colors">LinkedIn</a>
       </div>
 
       <div class="text-ink/40 dark:text-paper/40 font-mono text-[11px]">

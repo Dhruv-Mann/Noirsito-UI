@@ -28,40 +28,40 @@ const isDragging = ref(false)
 
 const projects: Project[] = [
   {
-    id: 'filemind',
-    title: 'Filemind',
+    id: 'project-one',
+    title: 'Project Alpha',
     subtitle: 'Autonomous Local File Intelligence & Context Engine',
     status: 'PRODUCTION',
     category: 'AI / ML',
     description: 'Local document intelligence engine that indexes, vectors, and analyzes unstructured files with zero external API leaks.',
     techStack: ['Tauri v2', 'Rust', 'React 18', 'Ollama AI', 'LanceDB', 'MCP Protocol'],
-    githubUrl: 'https://github.com/Dhruv-Mann/filemind',
-    demoUrl: 'https://filemind.vercel.app/',
+    githubUrl: 'https://github.com/example/project-alpha',
+    demoUrl: 'https://example.com/demo-alpha',
     telemetryBadge: 'AI FILE INTELLIGENCE',
-    image: '/filemind.png'
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop'
   },
   {
-    id: 'sentinel-vision',
-    title: 'Sentinel Vision',
-    subtitle: 'Resume Intelligence & Real-Time Tracking Platform',
+    id: 'project-two',
+    title: 'Project Beta',
+    subtitle: 'Real-Time Telemetry & Tracking Platform',
     status: 'PRODUCTION',
     category: 'FULL STACK',
-    description: 'Turn resumes into data sources with real-time viewer geolocation, device telemetry, reading duration tracking, and instant kill switches.',
+    description: 'Turn documents into data sources with real-time viewer telemetry, device metrics, duration tracking, and instant kill switches.',
     techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase', 'Tailwind CSS 4'],
-    githubUrl: 'https://github.com/Dhruv-Mann/Sentinel-Vision',
-    demoUrl: 'https://sentinel-vision-five.vercel.app/',
-    telemetryBadge: 'RESUME INTELLIGENCE',
-    image: '/Sentinel-Vision.png'
+    githubUrl: 'https://github.com/example/project-beta',
+    demoUrl: 'https://example.com/demo-beta',
+    telemetryBadge: 'TELEMETRY INTELLIGENCE',
+    image: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 'project-three',
-    title: 'Project 03',
-    subtitle: 'Upcoming Featured System',
+    title: 'Project Gamma',
+    subtitle: 'Upcoming Flagship System',
     status: 'IN DEVELOPMENT',
     category: 'FULL STACK',
-    description: 'Final flagship project showcase system in development. Details and live deployment coming soon.',
+    description: 'Flagship project showcase system in development. Details and live deployment coming soon.',
     techStack: ['TypeScript', 'Nuxt 4', 'Nitro', 'PostgreSQL'],
-    githubUrl: 'https://github.com/Dhruv-Mann',
+    githubUrl: 'https://github.com/example/project-gamma',
     telemetryBadge: 'FLAGSHIP SYSTEM',
     image: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=800&auto=format&fit=crop'
   }
