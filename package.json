@@ -1,10 +1,27 @@
 {
   "name": "noirsito-ui",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Minimalist Vue 3 & Nuxt component registry CLI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dhruv-Mann/Noirsito-UI.git"
+  },
+  "keywords": [
+    "vue3",
+    "nuxt",
+    "components",
+    "ui",
+    "cli",
+    "minimalist"
+  ],
   "type": "module",
   "bin": {
     "noirsito-ui": "./bin/cli.mjs"
   },
+  "files": [
+    "bin"
+  ],
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
