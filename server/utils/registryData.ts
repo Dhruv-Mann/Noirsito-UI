@@ -1,6 +1,13 @@
+import type { RegistryItem } from '~~/shared/types/registry'
 import fs from 'node:fs'
 import path from 'node:path'
-import type { RegistryItem } from '~~/shared/types/registry'
+
+// Statically bundle all .vue raw text contents at build time via Vite
+const rawComponentFiles = import.meta.glob<string>('~/components/ui/*.vue', {
+  query: '?raw',
+  import: 'default',
+  eager: true
+})
 
 const metadata: Record<string, { title: string; category: any; description: string; file: string }> = {
   'corner-stars': {
@@ -70,13 +77,21 @@ export function getRegistryItem(name: string): RegistryItem | null {
   if (!meta) return null
 
   let content = ''
-  try {
-    const filePath = path.resolve(process.cwd(), 'app/components/ui', meta.file)
-    if (fs.existsSync(filePath)) {
-      content = fs.readFileSync(filePath, 'utf8')
+
+  // 1. Try in-memory Vite raw glob bundle (works natively on Vercel serverless lambda & production builds)
+  const globKey = Object.keys(rawComponentFiles).find(k => k.endsWith(`/${meta.file}`))
+  if (globKey && rawComponentFiles[globKey]) {
+    content = rawComponentFiles[globKey]
+  } else {
+    // 2. Fallback to local fs for local development
+    try {
+      const filePath = path.resolve(process.cwd(), 'app/components/ui', meta.file)
+      if (fs.existsSync(filePath)) {
+        content = fs.readFileSync(filePath, 'utf8')
+      }
+    } catch (err) {
+      console.error(`[Registry] Error reading file ${meta.file}:`, err)
     }
-  } catch (err) {
-    console.error(`[Registry] Error reading file ${meta.file}:`, err)
   }
 
   return {

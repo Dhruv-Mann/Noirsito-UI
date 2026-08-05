@@ -1,6 +1,13 @@
 import { ref, computed } from 'vue'
 import type { RegistryMeta, ComponentCategory, RegistryItem } from '~~/shared/types/registry'
 
+// Statically bundle all raw .vue component contents on client side as an instant fallback
+const clientRawFiles = import.meta.glob<string>('~/components/ui/*.vue', {
+  query: '?raw',
+  import: 'default',
+  eager: true
+})
+
 const registryItems = ref<RegistryMeta[]>([
   {
     name: 'corner-stars',
@@ -130,6 +137,14 @@ export function useRegistry() {
     if (!meta) return undefined
 
     const fileName = fileMap[name]
+    let content = ''
+    if (fileName) {
+      const key = Object.keys(clientRawFiles).find(k => k.endsWith(`/${fileName}`))
+      if (key && clientRawFiles[key]) {
+        content = clientRawFiles[key]
+      }
+    }
+
     return {
       name: meta.name,
       title: meta.title,
@@ -139,7 +154,7 @@ export function useRegistry() {
         {
           path: `components/ui/${fileName}`,
           type: 'registry:ui',
-          content: ''
+          content
         }
       ]
     }
@@ -148,7 +163,10 @@ export function useRegistry() {
   async function fetchComponentRegistryData(name: string): Promise<RegistryItem | null> {
     try {
       const data = await $fetch<RegistryItem>(`/api/registry/${name}`)
-      return data || getLocalRegistryItem(name) || null
+      if (data && data.files && data.files[0] && data.files[0].content) {
+        return data
+      }
+      return getLocalRegistryItem(name) || null
     } catch {
       return getLocalRegistryItem(name) || null
     }
