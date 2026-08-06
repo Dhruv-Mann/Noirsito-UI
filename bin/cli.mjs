@@ -40,7 +40,8 @@ const REGISTRY_MAP = {
   'pixel-matrix': { title: 'Pixel Matrix Canvas', file: 'PixelMatrixCanvas.vue' },
   'ribbon-cut': { title: 'Ribbon Cut Canvas', file: 'RibbonCutCanvas.vue' },
   'command-palette': { title: 'App Command Palette', file: 'AppCommandPalette.vue' },
-  'app-grain': { title: 'App Grain Noise Overlay', file: 'AppGrain.vue' }
+  'app-grain': { title: 'App Grain Noise Overlay', file: 'AppGrain.vue' },
+  'target-cursor': { title: 'Target Cursor', file: 'TargetCursor.vue' }
 }
 
 async function main() {

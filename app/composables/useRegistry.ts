@@ -88,6 +88,14 @@ const registryItems = ref<RegistryMeta[]>([
     description: 'Tactile noise texture grain overlay for modern paper & dark background aesthetics.',
     tags: ['grain', 'noise', 'texture', 'overlay'],
     isNew: true
+  },
+  {
+    name: 'target-cursor',
+    title: 'Target Cursor',
+    category: 'animations',
+    description: 'Interactive target lock-on custom cursor with corner brackets, rotation spin dynamics, and I-beam text mode.',
+    tags: ['cursor', 'gsap', 'animation', 'target', 'interactive'],
+    isNew: true
   }
 ])
 
@@ -101,7 +109,8 @@ const fileMap: Record<string, string> = {
   'pixel-matrix': 'PixelMatrixCanvas.vue',
   'ribbon-cut': 'RibbonCutCanvas.vue',
   'command-palette': 'AppCommandPalette.vue',
-  'app-grain': 'AppGrain.vue'
+  'app-grain': 'AppGrain.vue',
+  'target-cursor': 'TargetCursor.vue'
 }
 
 const activeCategory = ref<ComponentCategory | 'all'>('all')

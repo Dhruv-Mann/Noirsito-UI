@@ -69,6 +69,12 @@ const metadata: Record<string, { title: string; category: any; description: stri
     category: 'animations',
     description: 'Tactile noise texture grain overlay for modern paper & dark background aesthetics.',
     file: 'AppGrain.vue'
+  },
+  'target-cursor': {
+    title: 'Target Cursor',
+    category: 'animations',
+    description: 'Interactive target lock-on custom cursor with corner brackets, rotation spin dynamics, and I-beam text mode.',
+    file: 'TargetCursor.vue'
   }
 }
 

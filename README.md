@@ -55,6 +55,7 @@ The CLI automatically fetches the component source and creates `./components/ui/
 | `ribbon-cut` | Ribbon Cut Canvas | Animations | Interactive ribbon-cut particle canvas with mouse slicing motion effects. |
 | `command-palette` | App Command Palette | Modals | Keyboard-first command palette modal container with search shortcuts. |
 | `app-grain` | App Grain Overlay | Animations | Tactile noise texture grain overlay for modern paper & dark background aesthetics. |
+| `target-cursor` | Target Cursor | Animations | Interactive target lock-on custom cursor with corner brackets, rotation spin dynamics, and I-beam text mode. |
 
 ---
 

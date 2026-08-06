@@ -36,6 +36,8 @@ const DynamicDemoComponent = computed(() => {
       return defineAsyncComponent(() => import('~/components/ui/RibbonCutCanvas.vue'))
     case 'command-palette':
       return defineAsyncComponent(() => import('~/components/ui/AppCommandPalette.vue'))
+    case 'target-cursor':
+      return defineAsyncComponent(() => import('~/components/ui/TargetCursor.vue'))
     default:
       return null
   }
