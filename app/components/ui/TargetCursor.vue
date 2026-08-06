@@ -1,51 +1,99 @@
 <template>
-  <div
-    v-if="enabled"
-    ref="cursorRef"
-    aria-hidden="true"
-    class="tc-root"
-    style="will-change: transform"
-  >
-    <!-- Central dot -->
-    <div
-      ref="dotRef"
-      class="tc-dot"
-      :style="{ willChange: 'transform', backgroundColor: cursorColor }"
-    />
-
-    <!-- I-beam for text input fields -->
-    <div
-      ref="ibeamRef"
-      class="tc-ibeam"
-      :style="{ willChange: 'transform', color: cursorColor, opacity: 0 }"
-    >
-      <div class="tc-ibeam-h" />
-      <div class="tc-ibeam-v" />
-      <div class="tc-ibeam-h" />
+  <div class="relative w-full h-full min-h-[440px] flex flex-col items-center justify-center p-6 gap-6 select-none isolate">
+    <!-- Interactive Target Playground Header -->
+    <div class="text-center flex flex-col gap-1.5 max-w-md">
+      <span class="text-[11px] font-mono tracking-widest uppercase text-rust dark:text-mustard font-bold">Target Lock Playground</span>
+      <h4 class="text-lg font-bold tracking-tight text-ink dark:text-paper">Hover over any element below</h4>
+      <p class="text-xs text-ink/60 dark:text-paper/60 leading-relaxed">
+        The custom target cursor spins in idle mode, snaps corner brackets to targets matching <code class="px-1.5 py-0.5 rounded bg-paper-300 dark:bg-ink-800 text-rust font-mono text-[11px]">.cursor-target</code>, and transforms into an I-beam over inputs.
+      </p>
     </div>
 
-    <!-- Four corner brackets (TL, TR, BR, BL) -->
-    <div
-      class="target-cursor-corner tc-corner tc-corner--tl"
-      :style="{ willChange: 'transform', borderColor: cursorColor }"
-    />
-    <div
-      class="target-cursor-corner tc-corner tc-corner--tr"
-      :style="{ willChange: 'transform', borderColor: cursorColor }"
-    />
-    <div
-      class="target-cursor-corner tc-corner tc-corner--br"
-      :style="{ willChange: 'transform', borderColor: cursorColor }"
-    />
-    <div
-      class="target-cursor-corner tc-corner tc-corner--bl"
-      :style="{ willChange: 'transform', borderColor: cursorColor }"
-    />
+    <!-- Interactive Target Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 w-full max-w-lg">
+      <button
+        type="button"
+        class="cursor-target px-4 py-3 rounded-xl border border-rust/40 bg-rust/10 hover:bg-rust text-rust hover:text-paper font-semibold text-xs transition-colors flex items-center justify-center gap-2 btn-tactile shadow-sm"
+      >
+        <span>Lock Target Alpha</span>
+      </button>
+
+      <button
+        type="button"
+        class="cursor-target px-4 py-3 rounded-xl border border-teal-deep/40 bg-teal-deep/10 hover:bg-teal-deep text-teal-deep hover:text-paper font-semibold text-xs transition-colors flex items-center justify-center gap-2 btn-tactile shadow-sm"
+      >
+        <span>Lock Target Beta</span>
+      </button>
+
+      <button
+        type="button"
+        class="cursor-target px-4 py-3 rounded-xl border border-mustard/40 bg-mustard/10 hover:bg-mustard text-mustard hover:text-ink font-semibold text-xs transition-colors flex items-center justify-center gap-2 btn-tactile shadow-sm"
+      >
+        <span>Lock Target Gamma</span>
+      </button>
+    </div>
+
+    <!-- Text Input Mode Demo -->
+    <div class="w-full max-w-lg flex flex-col gap-2">
+      <label class="text-[11px] font-mono text-ink/60 dark:text-paper/60">Hover over input for I-Beam mode:</label>
+      <input
+        type="text"
+        placeholder="Type here to test I-beam text mode..."
+        class="w-full px-4 py-2.5 rounded-xl border border-ink-200/80 dark:border-paper-400/20 bg-paper-100/90 dark:bg-ink-900/90 text-sm text-ink dark:text-paper placeholder:text-ink/40 dark:placeholder:text-paper/40 outline-none focus:border-rust transition-colors shadow-inner"
+      />
+    </div>
+
+    <!-- Target Cursor Fixed Overlay -->
+    <Teleport to="body">
+      <div
+        v-if="enabled"
+        ref="cursorRef"
+        aria-hidden="true"
+        class="tc-root"
+        style="will-change: transform"
+      >
+        <!-- Central dot -->
+        <div
+          ref="dotRef"
+          class="tc-dot"
+          :style="{ willChange: 'transform', backgroundColor: activeColor }"
+        />
+
+        <!-- I-beam for text input fields -->
+        <div
+          ref="ibeamRef"
+          class="tc-ibeam"
+          :style="{ willChange: 'transform', color: activeColor, opacity: 0 }"
+        >
+          <div class="tc-ibeam-h" />
+          <div class="tc-ibeam-v" />
+          <div class="tc-ibeam-h" />
+        </div>
+
+        <!-- Four corner brackets (TL, TR, BR, BL) -->
+        <div
+          class="target-cursor-corner tc-corner tc-corner--tl"
+          :style="{ willChange: 'transform', borderColor: activeColor }"
+        />
+        <div
+          class="target-cursor-corner tc-corner tc-corner--tr"
+          :style="{ willChange: 'transform', borderColor: activeColor }"
+        />
+        <div
+          class="target-cursor-corner tc-corner tc-corner--br"
+          :style="{ willChange: 'transform', borderColor: activeColor }"
+        />
+        <div
+          class="target-cursor-corner tc-corner tc-corner--bl"
+          :style="{ willChange: 'transform', borderColor: activeColor }"
+        />
+      </div>
+    </Teleport>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import { gsap } from 'gsap'
 
 interface Props {
@@ -62,7 +110,7 @@ const props = withDefaults(defineProps<Props>(), {
   spinDuration: 5,
   hoverDuration: 0.2,
   parallaxOn: true,
-  cursorColor: '#ffffff',
+  cursorColor: undefined,
   cursorColorOnTarget: undefined,
 })
 
@@ -78,19 +126,36 @@ const TEXT_ENTRY = 'input, textarea, [contenteditable="true"]'
 const MOUNT_QUERY = '(pointer: fine) and (prefers-reduced-motion: no-preference)'
 
 const enabled = ref(false)
+const isDark = ref(false)
 const cursorRef = ref<HTMLDivElement | null>(null)
 const dotRef = ref<HTMLDivElement | null>(null)
 const ibeamRef = ref<HTMLDivElement | null>(null)
 
+const activeColor = computed(() => {
+  if (props.cursorColor) return props.cursorColor
+  return isDark.value ? '#F7F3EC' : '#14110F'
+})
+
 let ctx: gsap.Context | null = null
 let mql: MediaQueryList | null = null
+let darkObserver: MutationObserver | null = null
 
 const handleMqChange = (e: MediaQueryListEvent | MediaQueryList) => {
   enabled.value = e.matches
 }
 
+function updateThemeState() {
+  if (typeof document !== 'undefined') {
+    isDark.value = document.documentElement.classList.contains('dark')
+  }
+}
+
 onMounted(() => {
   if (typeof window !== 'undefined') {
+    updateThemeState()
+    darkObserver = new MutationObserver(updateThemeState)
+    darkObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+
     mql = window.matchMedia(MOUNT_QUERY)
     handleMqChange(mql)
     mql.addEventListener('change', handleMqChange)
@@ -99,6 +164,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   if (mql) mql.removeEventListener('change', handleMqChange)
+  if (darkObserver) darkObserver.disconnect()
   cleanupGsap()
 })
 
@@ -112,7 +178,7 @@ watch(enabled, async (newVal) => {
 })
 
 watch(
-  () => [props.cursorColor, props.cursorColorOnTarget, props.targetSelector],
+  () => [activeColor.value, props.cursorColorOnTarget, props.targetSelector],
   () => {
     if (enabled.value) {
       cleanupGsap()
@@ -140,7 +206,7 @@ function initGsap() {
 
   ctx = gsap.context(() => {
     const corners = Array.from(cursor.querySelectorAll<HTMLDivElement>('.target-cursor-corner'))
-    const lockColor = props.cursorColorOnTarget ?? '#ffffff'
+    const lockColor = props.cursorColorOnTarget ?? (isDark.value ? '#E3A008' : '#C1502E')
 
     document.body.classList.add('custom-cursor')
 
@@ -247,7 +313,7 @@ function initGsap() {
         gsap.killTweensOf(strength)
         strength.value = 0
         setIbeam(false)
-        paint(props.cursorColor)
+        paint(activeColor.value)
         corners.forEach((c, i) => {
           gsap.killTweensOf(c, 'x,y')
           gsap.to(c, { ...IDLE_POS[i], duration: 0.3, ease: 'power3.out' })
@@ -298,7 +364,7 @@ function initGsap() {
 </script>
 
 <style>
-/* Global: hide system cursor when custom cursor is mounted */
+/* Global: hide system cursor when custom cursor is active */
 body.custom-cursor,
 body.custom-cursor * {
   cursor: none !important;
