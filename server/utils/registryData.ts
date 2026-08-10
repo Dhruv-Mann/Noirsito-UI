@@ -1,15 +1,6 @@
 import type { RegistryItem } from '~~/shared/types/registry'
-import fs from 'node:fs'
-import path from 'node:path'
 
-// Statically bundle all .vue raw text contents at build time via Vite
-const rawComponentFiles = import.meta.glob<string>('~/components/ui/*.vue', {
-  query: '?raw',
-  import: 'default',
-  eager: true
-})
-
-const metadata: Record<string, { title: string; category: any; description: string; file: string }> = {
+export const registryMetadata: Record<string, { title: string; category: any; description: string; file: string }> = {
   'corner-stars': {
     title: 'Corner Stars Canvas',
     category: 'animations',
@@ -78,26 +69,20 @@ const metadata: Record<string, { title: string; category: any; description: stri
   }
 }
 
-export function getRegistryItem(name: string): RegistryItem | null {
-  const meta = metadata[name]
+export async function getRegistryItem(name: string): Promise<RegistryItem | null> {
+  const meta = registryMetadata[name]
   if (!meta) return null
 
   let content = ''
-
-  // 1. Try in-memory Vite raw glob bundle (works natively on Vercel serverless lambda & production builds)
-  const globKey = Object.keys(rawComponentFiles).find(k => k.endsWith(`/${meta.file}`))
-  if (globKey && rawComponentFiles[globKey]) {
-    content = rawComponentFiles[globKey]
-  } else {
-    // 2. Fallback to local fs for local development
-    try {
-      const filePath = path.resolve(process.cwd(), 'app/components/ui', meta.file)
-      if (fs.existsSync(filePath)) {
-        content = fs.readFileSync(filePath, 'utf8')
-      }
-    } catch (err) {
-      console.error(`[Registry] Error reading file ${meta.file}:`, err)
+  
+  try {
+    // Read from Nitro server assets (works in dev and Vercel serverless)
+    const rawContent = await useStorage('assets:server:ui').getItem(meta.file)
+    if (rawContent) {
+      content = rawContent as string
     }
+  } catch (err) {
+    console.error(`[Registry] Error reading file ${meta.file}:`, err)
   }
 
   return {
@@ -114,9 +99,3 @@ export function getRegistryItem(name: string): RegistryItem | null {
     ]
   }
 }
-
-export const registryData: Record<string, RegistryItem> = new Proxy({}, {
-  get(target, prop: string) {
-    return getRegistryItem(prop) || undefined
-  }
-})

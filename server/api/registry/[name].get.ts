@@ -1,14 +1,13 @@
-import { registryData } from '~~/server/utils/registryData'
+import { getRegistryItem } from '~~/server/utils/registryData'
 
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
   let name = getRouterParam(event, 'name') || ''
   
-  // Clean off .json suffix if CLI requests glowing-button.json
   if (name.endsWith('.json')) {
     name = name.slice(0, -5)
   }
 
-  const component = registryData[name]
+  const component = await getRegistryItem(name)
 
   if (!component) {
     throw createError({

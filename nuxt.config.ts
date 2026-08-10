@@ -31,7 +31,13 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'vercel'
+    preset: 'vercel',
+    serverAssets: [
+      {
+        baseName: 'ui',
+        dir: './app/components/ui'
+      }
+    ]
   },
 
   tailwindcss: {
