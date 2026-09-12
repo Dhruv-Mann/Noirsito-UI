@@ -27,7 +27,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "prebuild": "node scripts/generate-registry-sources.mjs",
+    "predev": "node scripts/generate-registry-sources.mjs",
+    "postinstall": "node scripts/generate-registry-sources.mjs && nuxt prepare",
+    "test": "node --test tests/registry-sources.test.mjs"
   },
   "dependencies": {
     "@lucide/vue": "^1.27.0",

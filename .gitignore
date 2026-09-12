@@ -37,3 +37,6 @@ Thumbs.db
 
 # Custom skills lock
 skills-lock.json
+
+# Build-generated component source bundle (created by scripts/generate-registry-sources.mjs)
+server/utils/registry-sources.generated.mjs

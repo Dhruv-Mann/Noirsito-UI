@@ -1,4 +1,7 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import type { RegistryItem } from '~~/shared/types/registry'
+import bundledSources from './registry-sources.generated.mjs'
 
 export const registryMetadata: Record<string, { title: string; category: any; description: string; file: string }> = {
   'corner-stars': {
@@ -69,20 +72,38 @@ export const registryMetadata: Record<string, { title: string; category: any; de
   }
 }
 
+function asSourceString(value: unknown): string {
+  if (typeof value === 'string') return value
+  return ''
+}
+
+function readComponentSource(fileName: string): string {
+  // Local/dev: read the file on disk so the code viewer tracks edits without a rebuild.
+  if (process.env.NODE_ENV !== 'production') {
+    try {
+      const diskPath = path.resolve(process.cwd(), 'app/components/ui', fileName)
+      if (fs.existsSync(diskPath)) {
+        const fromDisk = fs.readFileSync(diskPath, 'utf8')
+        if (fromDisk.trim()) return fromDisk
+      }
+    } catch (err) {
+      console.error(`[Registry] Dev disk read failed for ${fileName}:`, err)
+    }
+  }
+
+  const bundled = asSourceString((bundledSources as Record<string, string>)[fileName])
+  if (bundled.trim()) return bundled
+
+  return ''
+}
+
 export async function getRegistryItem(name: string): Promise<RegistryItem | null> {
   const meta = registryMetadata[name]
   if (!meta) return null
 
-  let content = ''
-  
-  try {
-    // Read from Nitro server assets (works in dev and Vercel serverless)
-    const rawContent = await useStorage('assets:server:ui').getItem(meta.file)
-    if (rawContent) {
-      content = rawContent as string
-    }
-  } catch (err) {
-    console.error(`[Registry] Error reading file ${meta.file}:`, err)
+  const content = readComponentSource(meta.file)
+  if (!content.trim()) {
+    console.error(`[Registry] Missing bundled source for ${meta.file}`)
   }
 
   return {

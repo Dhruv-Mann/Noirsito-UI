@@ -9,7 +9,7 @@ import type { RegistryItem } from '~~/shared/types/registry'
 const route = useRoute()
 const componentName = computed(() => route.params.name as string)
 
-const { getComponentByName, getLocalRegistryItem } = useRegistry()
+const { getComponentByName, resolveRegistryItem } = useRegistry()
 
 const meta = computed(() => getComponentByName(componentName.value))
 
@@ -52,8 +52,7 @@ const { data: remoteData, pending, error } = await useFetch<RegistryItem>(
 )
 
 const registryItem = computed<RegistryItem | null>(() => {
-  if (remoteData.value) return remoteData.value
-  return getLocalRegistryItem(componentName.value) || null
+  return resolveRegistryItem(componentName.value, remoteData.value)
 })
 </script>
 

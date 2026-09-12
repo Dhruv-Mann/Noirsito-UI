@@ -15,12 +15,18 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { copied, copyToClipboard } = useCopy()
 
+const source = computed(() => {
+  return typeof props.code === 'string' ? props.code : ''
+})
+
 const lines = computed(() => {
-  return props.code.trim().split('\n')
+  if (!source.value.trim()) return []
+  return source.value.replace(/^\uFEFF/, '').split('\n')
 })
 
 function handleCopy() {
-  copyToClipboard(props.code)
+  if (!source.value.trim()) return
+  copyToClipboard(source.value)
 }
 </script>
 
@@ -39,7 +45,8 @@ function handleCopy() {
 
       <button
         type="button"
-        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-sans font-medium bg-paper/10 hover:bg-rust text-paper transition-all outline-none"
+        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-sans font-medium bg-paper/10 hover:bg-rust text-paper transition-all outline-none disabled:opacity-40 disabled:hover:bg-paper/10"
+        :disabled="lines.length === 0"
         @click="handleCopy"
       >
         <svg v-if="copied" class="w-3.5 h-3.5 text-paper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -54,7 +61,10 @@ function handleCopy() {
 
     <!-- Code Block Body with Line Numbers -->
     <div class="overflow-x-auto p-4 max-h-[480px] leading-relaxed">
-      <table class="w-full border-collapse">
+      <p v-if="lines.length === 0" class="text-paper/50 font-sans text-xs py-6 text-center">
+        Source is unavailable for this component.
+      </p>
+      <table v-else class="w-full border-collapse">
         <tbody>
           <tr v-for="(line, idx) in lines" :key="idx" class="hover:bg-white/[0.03]">
             <td class="pr-4 text-right select-none text-paper/30 w-8 font-mono text-[11px] align-top">

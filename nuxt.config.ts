@@ -1,4 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { generateRegistrySources } from './scripts/generate-registry-sources.mjs'
+
+generateRegistrySources()
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-07-28',
   future: {
@@ -31,13 +35,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'vercel',
-    serverAssets: [
-      {
-        baseName: 'ui',
-        dir: './app/components/ui'
-      }
-    ]
+    preset: 'vercel'
   },
 
   tailwindcss: {

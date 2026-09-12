@@ -169,13 +169,22 @@ export function useRegistry() {
     }
   }
 
+  function hasUsableSource(item: RegistryItem | null | undefined): item is RegistryItem {
+    const content = item?.files?.[0]?.content
+    return typeof content === 'string' && content.trim().length > 0
+  }
+
+  function resolveRegistryItem(name: string, remote: RegistryItem | null | undefined): RegistryItem | null {
+    const local = getLocalRegistryItem(name) || null
+    if (hasUsableSource(remote)) return remote
+    if (hasUsableSource(local)) return local
+    return remote || local
+  }
+
   async function fetchComponentRegistryData(name: string): Promise<RegistryItem | null> {
     try {
       const data = await $fetch<RegistryItem>(`/api/registry/${name}`)
-      if (data && data.files && data.files[0] && data.files[0].content) {
-        return data
-      }
-      return getLocalRegistryItem(name) || null
+      return resolveRegistryItem(name, data)
     } catch {
       return getLocalRegistryItem(name) || null
     }
@@ -198,6 +207,7 @@ export function useRegistry() {
     filteredComponents,
     getComponentByName,
     getLocalRegistryItem,
+    resolveRegistryItem,
     fetchComponentRegistryData,
     registerComponent
   }
